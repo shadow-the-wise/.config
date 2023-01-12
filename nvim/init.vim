@@ -1,26 +1,3 @@
-" Version: 1.0
-" Author: Shadow
-" Last Update: Fri 3 sep, 2021
-" Neo Vim:
-"==============================================================================
-"
-"    .o oOOOOOOOo                                       .....0OOOo
-"    Ob.OOOOOOOo  OOOo.      oOOo.              ....oooooOOOOOOOOO
-"    OOoO000000000000.OOo. .oOOOOOo.    OOOo.oOOOOO0000000000000OO
-"    OOO.oOOOOOOOOOOO 0POOOOOOOOOOOo.   `0OOOOOOOOOP,OOOOOOOOOOOB'
-"    `O'OOOO'     `OOOOo"OOOOOOOOOOO` .adOOOOOOOOO"oOOO'    `OOOOo
-"    .OOOO'            `OOOOOOOOOOOOOOOOOOOOOOOOOO'            `OO
-"    OOOOO                 '"OOOOOOOOOOOOOOOO"`                oOO
-"   oOOOOOOo.                .adOOOOOOOOOOba               .adOOOOo.
-"  oOOOOOOOOOOOOOba.    .adOOOOOOOOOO@^OOOOOOOba.     .adOOOOOOOOOOOO
-"  OOOOOOOOOOOOOOOOO.OOOOOOOOOOOOOO"`  '"OOOOOOOOOOOOO.OOOOOOOOOOOOOO
-"    :           'OOOOOOOOOOOOOO: .oOOo. :OOOOOOOOOOO?'         :`
-"    .            .oO%OOOOOOOOOOo.OOOOOO.oOOOOOOOOOOOO?         .
-"                 OOOO"%OOOOOOOOoOOOOOOO?oOOOOO?OOOO"OOO
-"                 '%o  OOOO"%OOOO%"%OOOOO"OOOOOO"OOO':
-"                      `$"  `OOOO' `O"! ' `OOOO'  o             .
-"    .                  .      O"          : o     .
-
 
 "==============================================================================
 " plugins {{{1
@@ -56,22 +33,17 @@ autocmd VimEnter *
   \| endif
 
 " }}}
-" lua requires {{{2
-
-lua << EOF
-require'hop'.setup()
-EOF
-
 " }}}
-" }}}
-" set shada='50,<1000,s100,:100n$XDG_DATA_HOME/nvim/shada/
 " lang providers {{{1
 " python {{{2
+
 " disable python 3
 let g:loaded_python3_provider = 0
+
 " }}}
 " }}}
 " filetype, syntax and conceal {{{1
+
 " make sure user defined tabs and indent are respected
 filetype indent off
 filetype plugin on
@@ -394,9 +366,6 @@ set wildignore+=*/.fdb*/,*/.toc,*/.out,*/.glo,*/.log,*/.ist,*/.fdb_latexmk
 " project and it'll be able to find the tags files.
 set tags=tags;/
 
-" }}}
-" spell {{{2
-"
 " }}}
 "}}} end history
 " Remaps {{{1
@@ -745,7 +714,7 @@ let g:indent_blankline_filetype_exclude = ['help', "checkhealth", "man", "md", "
 " }}}
 " raindow parenth {{{2
 
-let g:ada_rainbow_color = "true"
+" let g:ada_rainbow_color = "true"
 let g:rainbow_active = 1
 let g:rainbow_ctermfgs = ['darkblue', 'darkgrey', 'darkmagenta', 'magenta']
 
