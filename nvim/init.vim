@@ -1,4 +1,14 @@
-
+"==============================================================================
+" TITLE: Init
+" AUTHOR: Shadow
+" DATE: January 12, 2023
+"
+" Reqirments:
+"
+" These Enviroment variables should be set in the .zshenv
+"
+" XDG_CONFIG_HOME = ~/.config
+" XDG_DATA_HOME = ~/.local/share/
 "==============================================================================
 " plugins {{{1
 " runtime {{{2
@@ -444,9 +454,6 @@ set pastetoggle=<F1>
 nnoremap <leader><TAB> :set et! list!<CR>
 
 " }}}
-" nerdtree {{{2
-" nnoremap <leader>x :NERDTreeToggle<CR>
-" }}}
 " coc {{{2{{{
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
@@ -472,27 +479,6 @@ nnoremap <silent> <leader>s :CocList -I symbols<cr>
 " <leader> rb is a refactor
 
 " }}}}}}
-" multi cursor {{{2
-
-" hi CocCursorRange
-
-" press control d to add the word to multicursor word for renameing
-nmap <expr> <silent> <C-d> <SID>select_current_word()
-function! s:select_current_word()
-  if !get(b:, 'coc_cursors_activated', 0)
-    return "\<Plug>(coc-cursors-word)"
-  endif
-  return "*\<Plug>(coc-cursors-word):nohlsearch\<CR>"
-endfunc
-
-" press control c in normal mode to highlight all words under the cursor and use change word to
-" rename
-noremap <C-c> :CocCommand document.renameCurrentWord<cr>
-
-" }}}
-" date {{{2
-nnoremap <F5> "=strftime("%a, %b %e, %Y")<CR>P
-" }}}
 " }}} end remaps
 " commands and aug commands {{{1
 " commands {{{2
@@ -687,7 +673,6 @@ endfunction
 " search for tags in notes
 nnoremap <leader>xx :call TagGreper()<cr>
 
-
 " }}}
 " }}} end functions
 " vender plugins {{{1
@@ -709,7 +694,7 @@ runtime ./colors/custom-highlight-colors.vim
 " }}}
 " indent exclude {{{2
 
-let g:indent_blankline_filetype_exclude = ['help', "checkhealth", "man", "md", "markdown", "txt"]
+let g:indent_blankline_filetype_exclude = ['help', "checkhealth", "man", "md", "markdown", "txt", "vim"]
 
 " }}}
 " raindow parenth {{{2

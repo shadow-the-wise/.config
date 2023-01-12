@@ -83,6 +83,7 @@ require('telescope').setup{
 
 require("telescope").load_extension "file_browser"
 
+
 -- Personal Functions
 
 local M = {} -- Assign an empty table to the local variable M
@@ -104,3 +105,4 @@ end
 return M
 
 EOF
+

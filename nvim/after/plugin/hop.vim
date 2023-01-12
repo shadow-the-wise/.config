@@ -2,6 +2,11 @@
 nnoremap <silent>\ :HopChar1<cr>
 
 lua << EOF
-    require'hop'.setup()
+    local hop = require("hop")
+
+    hop.setup {
+    case_insensitive = false,
+    quit_key = "<Esc>",
+    }
 EOF
 

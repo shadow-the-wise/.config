@@ -1,2 +1,3 @@
 pry/themes/**
 .DS_Store
+cache/.DS_Store
