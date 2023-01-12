@@ -15192,3 +15192,29 @@ echo "Current time : $now"
 : 1673523780:0;tree
 : 1673523820:0;g st
 : 1673523886:0;g acm "MODIFIED: removed autoload. Added in XDG_DATA_HOME."
+: 1673523889:0;g push
+: 1673523901:0;g st
+: 1673523986:0;pry
+: 1673523992:0;cd pry
+: 1673523997:0;cd themes
+: 1673524000:0;up
+: 1673524003:0;up
+: 1673524017:0;v .gitignore
+: 1673524027:0;cd themes
+: 1673524036:0;v .gitignore
+: 1673524053:0;g st
+: 1673524107:0;g add .gitignore
+: 1673524119:0;g commit -m "ADDED: gitignore"
+: 1673524122:0;g push
+: 1673524151:0;finder
+: 1673524166:0;g st
+: 1673524179:0;g add pry/**
+: 1673524181:0;g st
+: 1673524211:0;g add pry/**
+: 1673524224:0;g add pry/**/*
+: 1673524225:0;g st
+: 1673524260:0;v .gitignore
+: 1673524276:0;g st
+: 1673524342:0;g add pry/**/*
+: 1673524344:0;g st
+: 1673524362:0;g acm "ADDED: pry/themes"

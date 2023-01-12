@@ -1,4 +1,6 @@
 /Users/shadowchaser/.config
+/Users/shadowchaser/.config/pry
+/Users/shadowchaser/.config/pry/themes
 /Users/shadowchaser/.config/nvim
 /Users/shadowchaser/.local
 /Users/shadowchaser/.local/share
@@ -46,5 +48,3 @@
 /Users/shadowchaser/sites/law/concepts/reasoning/deductive/syllogism/predictive/categorical
 /Users/shadowchaser/.notes/system/morality
 /Users/shadowchaser/.bin/Apple-Defaults-Scripts
-/Users/shadowchaser/.bin
-/Users/shadowchaser/downloads
