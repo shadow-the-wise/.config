@@ -9,6 +9,8 @@ if empty(glob("$XDG_DATA_HOME/nvim/site/autoload/plug.vim"))
   autocmd VimEnter * PlugInstall
 endif
 
+" Call plugged package manager
+"
 call plug#begin("$XDG_DATA_HOME/nvim/plugged")
 
 "------------------------------------------------------------------------------

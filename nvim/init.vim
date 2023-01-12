@@ -318,6 +318,7 @@ set complete+=kspell
 set dictionary+=/usr/share/dict/words
 
 " set spell file location
+"
 set spellfile=~/.config/nvim/spell/custom-dictionary.utf-8.add
 
 " }}}
@@ -552,20 +553,27 @@ command! Gqf GitGutterQuickFix | copen
 " Aug Commands {{{2
 if has("autocmd")
 " set spell {{{3
+
 " enable spell only if file type is normal text
 let spellable = ['md', 'markdown', 'gitcommit', 'txt', 'text']
 autocmd BufEnter * if index(spellable, &ft) < 0 | set nospell | else | set spell | endif
+
 " }}}
 " equal on resize {{{3
+
 " If the terminal frame is reduce or expanded keep the windows equal.
 au VimResized * :wincmd =
+
 " }}}
 " set paste exit {{{3
+
 " exit paste when past has been set.
 autocmd InsertLeave * set nopaste
+
 " }}}
 " return to line {{{3
 " Make sure Vim returns to the same line when you reopen a file.
+
 augroup line_return
 	au!
 	au BufReadPost *
@@ -573,11 +581,26 @@ augroup line_return
 		\     execute 'normal! g`"zvzz' |
 		\ endif
 augroup END
+
 " }}}
 " highlight symbols {{{3
 
+" One way is to do a regex search on runtimepath
+" If you're using vim-plug, here's a general purpose method to check:
+"
+function! PlugLoaded(name)
+    return (
+        \ has_key(g:plugs, a:name) &&
+        \ isdirectory(g:plugs[a:name].dir) &&
+        \ stridx(&rtp, g:plugs[a:name].dir) >= 0)
+endfunction
+
 " highlight all matching words under the cursor
-autocmd CursorHold * silent call CocActionAsync('highlight')
+"
+if PlugLoaded('coc.nvim')
+    autocmd CursorHold * silent call CocActionAsync('highlight')
+endif
+
 " }}}
 " clear white space {{{3
 autocmd BufWritePre * :%s/\s\+$//e
