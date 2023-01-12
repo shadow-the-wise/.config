@@ -1,4 +1,4 @@
-let g:coc_data_home = "$XDG_DATA_HOME/coc"
+let g:coc_data_home = "$XDG_DATA_HOME/nvim/coc"
 
 " coc_global_extensions. These extensions will be installed on startup.
 let g:coc_global_extensions = [

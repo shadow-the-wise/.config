@@ -1,0 +1,1676 @@
+#==============================================================================
+# Version: 3.0
+# Author: Shadow
+# Last Update: saturday, 30th april, 2022
+#==============================================================================
+# USER CONFIG
+#==============================================================================
+# User {{{1
+
+[user]
+    name = shadowchaser04
+    email = shadowchasing@icloud.com
+    username = shadowchaser04
+
+#[url "https://github.com/"]
+#    insteadOf = gh:
+#
+#[url "https://gist.github.com/"]
+#    insteadOf = gist:
+# }}}
+# Keychain {{{1
+#------------------------------------------------------------------------------
+[credential]
+    helper = osxkeychain
+
+# }}}
+# template {{{1
+[init]
+    templatedir = "$XDG_CONFIG_HOME/git/git_template"
+# }}}
+# Core {{{1
+#------------------------------------------------------------------------------
+[core]
+    # Global git ignore
+    excludesfile = $XDG_CONFIG_HOME/git/.gitignore_global
+
+    # Global default editor
+    editor = nvim
+
+    # The -r flag causes "raw" control characters to be displayed.
+    pager = less -r
+
+    # Treat spaces before tabs and all kinds of trailing whitespace as an error
+    # [default] trailing-space: short-hand to cover both blank-at-eol and blank-at-eof
+    # [default] space-before-tab: looks for spaces before tabs at the beginning of a line
+    whitespace = space-before-tab,-indent-with-non-tab,trailing-space
+
+[apply]
+    # to fix whitespace errors in patches
+    whitespace = fix
+# }}}
+# Formatting {{{1
+
+# pretty formatting aliases
+[pretty]
+    log-long = "%C(dim blue)%h%C(reset) - %C(bold blue)%ad%C(reset)%C(reset)%C(auto)%d %C(bold white)(%ar)               %C(reset)%n          %C(white)%s%C(reset) %C(dim white)- %cn%C(reset)%n"
+    log-short = "%C(dim blue)%h%Creset - %C(bold blue)%ad%Creset%C(auto)%d %s %C(dim white)- %cn %Creset"
+
+# sets the default formatting for log, and show.
+[format]
+    pretty = log-long
+
+[log]
+    abbrevCommit = true
+    date = format:%a, %d %b %Y %H:%M:%S
+
+[commit]
+    template = "$XDG_CONFIG_HOME/git/.gitmessage"
+# }}}
+# Git {{{1
+#------------------------------------------------------------------------------
+[push]
+    # push all matching branches
+    default = matching
+    # upstream: push the current branch to its upstream branch
+    # default = upstream
+    # push the current branch to its upstream branch
+    # default = current
+
+[diff]
+    tool = vimdiff
+
+[fetch]
+    prune = true
+
+[status]
+    submoduleSummary = true
+# }}}
+# Color {{{1
+
+[color]
+    ui = auto
+    branch = auto
+    diff = auto
+    status = auto
+    showbranch = auto
+    pager = true
+
+[color "status"]
+    branch = blue bold
+    added = green
+    untracked = red
+    changed = cyan
+
+[color "branch"]
+    upstream = white
+    current = white
+    local = white
+    remote = white
+
+[color "decorate"]
+    HEAD = blue
+    branch = white bold
+    tag = white
+    remoteBranch = green
+    stash = white
+
+[color "diff"]
+    commit = blue
+    old = red
+    new = green
+    frag = magenta bold
+    plain = cyan
+    meta = white
+    whitespaces = red reverse
+
+[color "grep"]
+    match = green
+
+# }}}
+#==============================================================================
+# ALIASES
+#==============================================================================
+[alias]
+# root {{{1
+
+# rev-parse
+#
+# Many Git porcelainish commands take mixture of flags (i.e. parameters that
+# begin with a dash -) and parameters meant for the underlying git rev-list
+# command they use internally and flags and parameters for the other commands
+# they use downstream of git rev-list. This command is used to distinguish
+# between them.
+#
+# --show-toplevel:
+#
+# root of the directory
+root = rev-parse --show-toplevel
+
+# }}}
+# add and status {{{1
+
+# status
+#
+# Displays paths that have differences between the index file and the current
+# HEAD commit, paths that have differences between the working tree and the
+# index file, and paths in the working tree that are not tracked by Git (and
+# are not ignored by gitignore). The first are what you would commit by running
+# git commit; the second and third are what you could commit by running git add
+# before running git commit.
+#
+# show current status
+st = status
+
+# add
+#
+# This command updates the index using the current content found in the working
+# tree, to prepare the content staged for the next commit. It typically adds
+# the current content of existing paths as a whole, but with some options it
+# can also be used to add content with only part of the changes made to the
+# working tree files applied, or remove paths that do not exist in the working
+# tree anymore.
+#
+# .:
+#
+# git add . stages new files and modifications, without deletions (on the
+# current directory and its subdirectories).
+#
+# status
+#
+# Displays paths that have differences between the index file and the current
+# HEAD commit, paths that have differences between the working tree and the
+# index file, and paths in the working tree that are not tracked by Git (and
+# are not ignored by gitignore). The first are what you would commit by running
+# git commit; the second and third are what you could commit by running git add
+# before running git commit.
+#
+# add changes
+a = !git add . && git status
+
+# add
+#
+# This command updates the index using the current content found in the working
+# tree, to prepare the content staged for the next commit. It typically adds
+# the current content of existing paths as a whole, but with some options it
+# can also be used to add content with only part of the changes made to the
+# working tree files applied, or remove paths that do not exist in the working
+# tree anymore.
+#
+# -A:
+# --all
+#
+# Update the index not only where the working tree has a file matching
+# <pathspec> but also where the index already has an entry. This adds,
+# modifies, and removes index entries to match the working tree.
+
+# If no <pathspec> is given when -A option is used, all files in the entire
+# working tree are updated.
+#
+# old versions of Git used to limit the update to the current directory and
+# its subdirectories.
+#
+# status
+#
+# Displays paths that have differences between the index file and the current
+# HEAD commit, paths that have differences between the working tree and the
+# index file, and paths in the working tree that are not tracked by Git (and
+# are not ignored by gitignore). The first are what you would commit by
+# running git commit; the second and third are what you could commit by running
+# git add before running git commit.
+#
+aa = !git add -A && git status
+
+# }}}
+# ahead behind {{{1
+
+# rev-list
+#
+# Lists commit objects in reverse chronological order
+#
+# --left-only:
+#
+# List only commits on the respective side of a symmetric difference, i.e. only
+# those which would be marked < resp. > by --left-right.
+#
+# --count
+#
+# Print a number stating how many commits would have been listed, and suppress
+# all other output. When used together with --left-right, instead print the
+# counts for left and right commits, separated by a tab. When used together
+# with --cherry-mark, omit patch equivalent commits from these counts and print
+# the count for equivalent commits separated by a tab.
+#
+# HEAD
+#
+# When working with Git, only one branch can be checked out at a time - and
+# this is what's called the "HEAD" branch. Often, this is also referred to as
+# the "active" or "current" branch. Git makes note of this current branch in a
+# file located inside the Git repository, in .git/HEAD.
+#
+behind = !git rev-list --left-only --count $(git bu)...HEAD
+
+# rev-list
+#
+# Lists commit objects in reverse chronological order
+#
+# --right-only:
+#
+# List only commits on the respective side of a symmetric difference, i.e. only
+# those which would be marked < resp. > by --left-right.
+#
+# --count:
+#
+# Print a number stating how many commits would have been listed, and suppress
+# all other output. When used together with --left-right, instead print the
+# counts for left and right commits, separated by a tab. When used together
+# with --cherry-mark, omit patch equivalent commits from these counts and print
+# the count for equivalent commits separated by a tab.
+#
+# HEAD
+#
+# When working with Git, only one branch can be checked out at a time - and
+# this is what's called the "HEAD" branch. Often, this is also referred to as
+# the "active" or "current" branch. Git makes note of this current branch in a
+# file located inside the Git repository, in .git/HEAD.
+#
+ahead = !git rev-list --right-only --count $(git bu)...HEAD
+
+# }}}
+# aliases list {{{1
+
+# Get and set repository or global options
+aliases = config --get-regexp alias
+
+# }}}
+# branch {{{1
+
+# for-each-ref
+#
+# --sort:
+# --sort=<key>
+#
+# Sort based on the key given. Prefix - to sort in descending order of the
+# value. You may use the --sort=<key> option multiple times, in which case the
+# last key becomes the primary key. The keys supported are the same as those in
+# git for-each-ref. Sort order defaults to the value configured for the
+# branch.sort variable if exists, or to sorting based on the full refname
+# (including refs/... prefix). This lists detached HEAD (if present) first,
+# then local branches and finally remote-tracking branches.
+#
+# --format:
+#
+# A string that interpolates %(fieldname) from a branch ref being shown and the
+# object it points at. The format is the same as that of git-for-each-ref.
+#
+# local branches
+bl = for-each-ref --sort=-committerdate --format=\"%(color:blue)%(authordate:relative)\t%(color:white)%(authorname)\t%(color:green)%(color:bold)%(refname:short)\" refs/heads
+
+# for-each-ref
+#
+# --sort:
+# --sort=<key>
+#
+# Sort based on the key given. Prefix - to sort in descending order of the
+# value. You may use the --sort=<key> option multiple times, in which case the
+# last key becomes the primary key. The keys supported are the same as those in
+# git for-each-ref. Sort order defaults to the value configured for the
+# branch.sort variable if exists, or to sorting based on the full refname
+# (including refs/... prefix). This lists detached HEAD (if present) first,
+# then local branches and finally remote-tracking branches.
+#
+# --format:
+#
+# A string that interpolates %(fieldname) from a branch ref being shown and the
+# object it points at. The format is the same as that of git-for-each-ref.
+#
+# remote branch - list all branches with formatting time ago, author and branch
+br = for-each-ref --sort=-committerdate --format=\"%(color:blue)%(authordate:relative)\t%(color:white)%(authorname)\t%(color:green)%(color:bold)%(refname:short)\" refs/remotes
+
+# both remote and local branches
+bb = "!git bl && git br"
+
+# branch
+#
+# A branch represents an independent line of development. Branches serve as an
+# abstraction for the edit/stage/commit process. You can think of them as a way
+# to request a brand new working directory, staging area, and project history.
+# New commits are recorded in the history for the current branch, which results
+# in a fork in the history of the project.
+
+# The git branch command lets you create, list, rename, and delete branches. It
+# doesn’t let you switch between branches or put a forked history back together
+# again. For this reason, git branch is tightly integrated with the git
+# checkout and git merge commands.
+#
+# --no-merged:
+# --no-merged [<commit>]
+#
+# Only list branches whose tips are not reachable from the specified commit
+# (HEAD if not specified). Implies --list
+#
+# branch not merged
+bnm = branch --no-merged
+
+# branch
+#
+# A branch represents an independent line of development. Branches serve as an
+# abstraction for the edit/stage/commit process. You can think of them as a way
+# to request a brand new working directory, staging area, and project history.
+# New commits are recorded in the history for the current branch, which results
+# in a fork in the history of the project.
+#
+# The git branch command lets you create, list, rename, and delete branches. It
+# doesn’t let you switch between branches or put a forked history back together
+# again. For this reason, git branch is tightly integrated with the git
+# checkout and git merge commands.
+#
+# -D
+#
+# shortcut for --delete --force.
+#
+# delete local branch
+delete-local-branch = branch -D
+
+# push
+#
+# The git push command is used to upload local repository content to a remote
+# repository. Pushing is how you transfer commits from your local repository to
+# a remote repo. It's the counterpart to git fetch , but whereas fetching
+# imports commits to local branches, pushing exports commits to remote
+# branches.
+#
+# --delete:
+#
+# Delete a branch. The branch must be fully merged in its upstream branch, or
+# in HEAD if no upstream was set with --track or --set-upstream-to.
+#
+#
+# delete remote branch
+# git push origin --delete <remote branch>
+delete-remote-branch = "!sh -c 'git push $1 --delete $2' -"
+
+# clean
+# git checkout <master-default> and find branches that have merged with
+# master, grep inverse master to remove it from the results then pipe to
+# exargs to remove each branch that has been already merged.
+bclean = "!f() { git checkout ${1-master} && git branch --merged ${1-master} | grep -v " ${1-master}$" | xargs -I{} git branch -d {}; }; f"
+
+# }}}
+# checkout {{{1
+#--------------------------------------------------------------------------
+
+# checkout
+#
+# Updates files in the working tree to match the version in the index or the
+# specified tree. If no pathspec was given, git checkout will also update HEAD
+# to set the specified branch as the current branch.
+#
+co = checkout
+
+# checkout
+#
+# Updates files in the working tree to match the version in the index or the
+# specified tree. If no pathspec was given, git checkout will also update HEAD
+# to set the specified branch as the current branch.
+#
+# -b:
+# <new-branch>
+#
+# Create a new branch named <new-branch>
+#
+#
+# checkout a branch
+cob = checkout -b
+
+# checkout
+#
+# Updates files in the working tree to match the version in the index or the
+# specified tree. If no pathspec was given, git checkout will also update HEAD
+# to set the specified branch as the current branch.
+#
+# -:
+#
+# checks out the last branch
+col = checkout -
+
+# }}}
+# clone {{{1
+
+# clone a remote repo git clgp <repo-name>
+cl = !sh -c 'git clone git@github.com:$(git config --get user.username)/$1 $1' -
+
+# }}}
+# commit {{{1
+
+# commit
+#
+# Create a new commit containing the current contents of the index and the
+# given log message describing the changes. The new commit is a direct child of
+# HEAD, usually the tip of the current branch, and the branch is updated to
+# point to it (unless no branch is associated with the working tree, in which
+# case HEAD is "detached").
+#
+# -m:
+# --message=<msg>
+#
+# Use the given <msg> as the commit message. If multiple -m options are given,
+# their values are concatenated as separate paragraphs.
+#
+# commit with message flag
+cm = commit -m
+
+# add
+#
+# This command updates the index using the current content found in the working
+# tree, to prepare the content staged for the next commit. It typically adds
+# the current content of existing paths as a whole, but with some options it
+# can also be used to add content with only part of the changes made to the
+# working tree files applied, or remove paths that do not exist in the working
+# tree anymore.
+#
+# -u:
+# --update
+#
+# Update the index just where it already has an entry matching <pathspec>. This
+# removes as well as modifies index entries to match the working tree, but adds
+# no new files.
+#
+# If no <pathspec> is given when -u option is used, all tracked files in the
+# entire working tree are updated (old versions of Git used to limit the update
+# to the current directory and its subdirectories).
+#
+# commit
+#
+# Create a new commit containing the current contents of the index and the
+# given log message describing the changes. The new commit is a direct child of
+# HEAD, usually the tip of the current branch, and the branch is updated to
+# point to it (unless no branch is associated with the working tree, in which
+# case HEAD is "detached" as described in git-checkout).
+#
+aucm = !git add -u && git commit -m
+
+
+# add
+#
+# This command updates the index using the current content found in the working
+# tree, to prepare the content staged for the next commit. It typically adds
+# the current content of existing paths as a whole, but with some options it
+# can also be used to add content with only part of the changes made to the
+# working tree files applied, or remove paths that do not exist in the working
+# tree anymore.
+#
+# .:
+#
+# git add . stages new files and modifications, without deletions (on the
+# current directory and its subdirectories).
+#
+# commit
+#
+# Create a new commit containing the current contents of the index and the
+# given log message describing the changes. The new commit is a direct child of
+# HEAD, usually the tip of the current branch, and the branch is updated to
+# point to it (unless no branch is associated with the working tree, in which
+# case HEAD is "detached").
+#
+# combine add and commit
+acm = !git add . && git commit -m
+
+
+# add
+#
+# This command updates the index using the current content found in the working
+# tree, to prepare the content staged for the next commit. It typically adds
+# the current content of existing paths as a whole, but with some options it
+# can also be used to add content with only part of the changes made to the
+# working tree files applied, or remove paths that do not exist in the working
+# tree anymore.
+#
+# -A:
+#
+# --all
+#
+# Update the index not only where the working tree has a file matching
+# <pathspec> but also where the index already has an entry. This adds,
+# modifies, and removes index entries to match the working tree.
+#
+# commit
+#
+# Create a new commit containing the current contents of the index and the
+# given log message describing the changes. The new commit is a direct child of
+# HEAD, usually the tip of the current branch, and the branch is updated to
+# point to it (unless no branch is associated with the working tree, in which
+# case HEAD is "detached").
+#
+# combine add and commit
+aacm = !git add -A && git commit -m
+
+# commit
+#
+# Create a new commit containing the current contents of the index and the
+# given log message describing the changes. The new commit is a direct child of
+# HEAD, usually the tip of the current branch, and the branch is updated to
+# point to it (unless no branch is associated with the working tree, in which
+# case HEAD is "detached" as described in git-checkout).
+#
+# --amend:
+#
+# Replace the tip of the current branch by creating a new commit. The recorded
+# tree is prepared as usual (including the effect of the -i and -o options and
+# explicit pathspec), and the message from the original commit is used as the
+# starting point, instead of an empty message, when no other message is
+# specified from the command line via options such as -m, -F, -c, etc. The new
+# commit has the same parents and author as the current one (the --reset-author
+# option can countermand this).
+#
+# --reuse-message:
+# --reuse-message=<commit>
+#
+# Take an existing commit object, and reuse the log message and the authorship
+# information (including the timestamp) when creating the commit.
+#
+# HEAD
+#
+# When working with Git, only one branch can be checked out at a time - and
+# this is what's called the "HEAD" branch. Often, this is also referred to as
+# the "active" or "current" branch. Git makes note of this current branch in a
+# file located inside the Git repository, in .git/HEAD.
+#
+# Amend the currently staged files to the latest commit
+amend = commit --amend --reuse-message=HEAD
+
+# }}}
+# commits day / month {{{1
+#--------------------------------------------------------------------------
+
+# log
+#
+# A Git log is a running record of commits. A full log has the following pieces:
+
+# A commit hash (SHA1 40 character checksum of the commits contents). Because
+# it is generated based on the commit contents it is unique. Commit Author
+# metadata: The name and email address of the author of the commit. Commit Date
+# metadata: A date timestamp for the time of the commit Commit title/message:
+# The overview of the commit as written in the commit message.
+#
+# --author:
+# --author=<pattern>
+# --committer=<pattern>
+#
+# Limit the commits output to ones with author/committer header lines that
+# match the specified pattern (regular expression). With more than one
+# --author=<pattern>, commits whose author matches any of the given patterns
+# are chosen (similarly for multiple --committer=<pattern>).
+#
+# --before:
+# --before=<date>
+#
+# Show commits older than a specific date.
+#
+# --after:
+# --after=<date>
+#
+# Show commits more recent than a specific date.
+#
+# --reverse:
+#
+# comits this month
+c-t-m = !git log --author=\"`git config user.name`\" --before=now --after={`date "+%Y-%m-1"`} --reverse
+
+# log
+#
+#
+# A Git log is a running record of commits. A full log has the following pieces:
+#
+# A commit hash (SHA1 40 character checksum of the commits contents). Because
+# it is generated based on the commit contents it is unique. Commit Author
+# metadata: The name and email address of the author of the commit. Commit Date
+# metadata: A date timestamp for the time of the commit Commit title/message:
+# The overview of the commit as written in the commit message.
+#
+# --author:
+# --committer=<pattern>
+#
+# Limit the commits output to ones with author/committer header lines that
+# match the specified pattern (regular expression). With more than one
+# --author=<pattern>, commits whose author matches any of the given patterns
+# are chosen (similarly for multiple --committer=<pattern>).
+#
+# --since:
+# --since=<date>
+#
+# Show commits more recent than a specific date.
+#
+# Source: http://stackoverflow.com/a/5178739/1367612
+# comits today
+c-t = log --author=\"`git config user.name`\" --since=\"6am\"
+
+# }}}
+# ctags {{{1
+
+ctags = !.git/hooks/ctags
+
+# }}}
+# diff {{{1
+
+# diff
+#
+# Diffing is a function that takes two input data sets and outputs the changes
+# between them. git diff is a multi-use Git command that when executed runs a
+# diff function on Git data sources. These data sources can be commits,
+# branches, files and more.
+#
+# diff unstaged - diff of what is changed but not staged
+d = diff
+
+# diff
+#
+# Diffing is a function that takes two input data sets and outputs the changes
+# between them. git diff is a multi-use Git command that when executed runs a
+# diff function on Git data sources. These data sources can be commits,
+# branches, files and more.
+#
+# --staged:
+#
+# This form is to view the changes you staged for the next commit relative to
+# the named <commit>. Typically you would want comparison with the latest
+# commit, so if you do not give <commit>, it defaults to HEAD. If HEAD does not
+# exist (e.g. unborn branches) and <commit> is not given, it shows all staged
+# changes. --staged is a synonym of --cached.
+#
+# diff staged - diff of what is staged but not yet committed
+ds =  diff --staged
+
+# log
+#
+# A Git log is a running record of commits. A full log has the following pieces:
+#
+# A commit hash (SHA1 40 character checksum of the commits contents). Because
+# it is generated based on the commit contents it is unique. Commit Author
+# metadata: The name and email address of the author of the commit. Commit Date
+# metadata: A date timestamp for the time of the commit Commit title/message:
+# The overview of the commit as written in the commit message.
+#
+# origin
+#
+# In Git, "origin" is a shorthand name for the remote repository that a project
+# was originally cloned from. More precisely, it is used instead of that
+# original repository's URL - and thereby makes referencing much easier. Note
+# that origin is by no means a "magical" name, but just a standard convention.
+#
+# master
+#
+# In Git, "master" is a naming convention for a branch. After cloning
+# (downloading) a project from a remote server, the resulting local repository
+# has a single local branch: the so-called "master" branch. This means that
+# "master" can be seen as a repository's "default" branch.
+#
+# HEAD
+#
+# When working with Git, only one branch can be checked out at a time - and
+# this is what's called the "HEAD" branch. Often, this is also referred to as
+# the "active" or "current" branch. Git makes note of this current branch in a
+# file located inside the Git repository, in .git/HEAD.
+#
+# -p:
+# -u
+# --patch
+#
+# Generate patch (see section on generating patches). This is the default.
+#
+# --oneline:
+#
+# diff committed - diff committed
+dc = !git log origin/master..HEAD -p --oneline
+
+# diff
+#
+# Diffing is a function that takes two input data sets and outputs the changes
+# between them. git diff is a multi-use Git command that when executed runs a
+# diff function on Git data sources. These data sources can be commits,
+# branches, files and more.
+#
+# master
+#
+# In Git, "master" is a naming convention for a branch. After cloning
+# (downloading) a project from a remote server, the resulting local repository
+# has a single local branch: the so-called "master" branch. This means that
+# "master" can be seen as a repository's "default" branch.
+#
+# --stat:
+# --stat[=<width>[,<name-width>[,<count>]]]
+#
+# Generate a diffstat. By default, as much space as necessary will be used for
+# the filename part, and the rest for the graph part. Maximum width defaults to
+# terminal width, or 80 columns if not connected to a terminal, and can be
+# overridden by <width>. The width of the filename part can be limited by
+# giving another width <name-width> after a comma. The width of the graph part
+# can be limited by using --stat-graph-width=<width> (affects all commands
+# generating a stat graph) or by setting diff.statGraphWidth=<width> (does not
+# affect git format-patch). By giving a third parameter <count>, you can limit
+# the output to the first <count> lines, followed by ... if there are more.
+#
+dm = diff master --stat
+
+# }}}
+# log {{{1
+#--------------------------------------------------------------------------
+# Display a log of all pushed changes on each branch.
+
+# log
+#
+# A Git log is a running record of commits. A full log has the following pieces:
+#
+# A commit hash (SHA1 40 character checksum of the commits contents). Because
+# it is generated based on the commit contents it is unique. Commit Author
+# metadata: The name and email address of the author of the commit. Commit Date
+# metadata: A date timestamp for the time of the commit Commit title/message:
+# The overview of the commit as written in the commit message.
+#
+# --graph:
+#
+# Draw a text-based graphical representation of the commit history on the left
+# hand side of the output. This may cause extra lines to be printed in between
+# commits, in order for the graph history to be drawn properly. Cannot be
+# combined with --no-walk.
+
+# This enables parent rewriting, see History Simplification above.
+
+# This implies the --topo-order option by default, but the --date-order option
+# may also be specified.
+#
+# --decorate:
+# --decorate[=short|full|auto|no]
+#
+# Print out the ref names of any commits that are shown. If short is specified,
+# the ref name prefixes refs/heads/, refs/tags/ and refs/remotes/ will not be
+# printed. If full is specified, the full ref name (including prefix) will be
+# printed. If auto is specified, then if the output is going to a terminal, the
+# ref names are shown as if short were given, otherwise no ref names are shown.
+# The option --decorate is short-hand for --decorate=short. Default to
+# configuration value of log.decorate if configured, otherwise, auto.
+#
+# --all:
+#
+# --date-order:
+#
+# Show no parents before all of its children are shown, but otherwise show
+# commits in the commit timestamp order.
+#
+# --format:
+# --format=<format>
+#
+# Pretty-print the contents of the commit logs in a given format, where
+# <format> can be one of oneline, short, medium, full, fuller, reference,
+# email, raw, format:<string> and tformat:<string>. When <format> is none of
+# the above, and has %placeholder in it, it acts as if
+# --pretty=tformat:<format> were given.
+
+# See the "PRETTY FORMATS" section for some additional details for each format.
+# When =<format> part is omitted, it defaults to medium.
+
+# Note: you can specify the default pretty format in the repository
+# configuration
+#
+# Displays a log of each push on a per line output.
+l = log --graph --decorate --all --date-order --format=log-short
+
+# log
+#
+# A Git log is a running record of commits. A full log has the following pieces:
+#
+# A commit hash (SHA1 40 character checksum of the commits contents). Because
+# it is generated based on the commit contents it is unique. Commit Author
+# metadata: The name and email address of the author of the commit. Commit Date
+# metadata: A date timestamp for the time of the commit Commit title/message:
+# The overview of the commit as written in the commit message.
+#
+# --graph:
+#
+# Draw a text-based graphical representation of the commit history on the left
+# hand side of the output. This may cause extra lines to be printed in between
+# commits, in order for the graph history to be drawn properly. Cannot be
+# combined with --no-walk.
+
+# This enables parent rewriting, see History Simplification above.
+
+# This implies the --topo-order option by default, but the --date-order option
+# may also be specified.
+#
+# --abbrev-commit:
+#
+# --decorate:
+# --decorate[=short|full|auto|no]
+#
+# Draw a text-based graphical representation of the commit history on the left
+# hand side of the output. This may cause extra lines to be printed in between
+# commits, in order for the graph history to be drawn properly. Cannot be
+# combined with --no-walk.
+
+# This enables parent rewriting, see History Simplification above.
+
+# This implies the --topo-order option by default, but the --date-order option
+# may also be specified.
+#
+# --all:
+#
+# Displays a log of each push in a formatted output.
+la = log --graph --abbrev-commit --decorate --all
+
+# log
+#
+# When this is used inconjunction with log it will look up and open any
+# comit-id or message(s) matching the arg.
+look = "!f() { git l | grep \"$1\" | cut -d ' ' -f 1 | xargs git show; }; f"
+
+# log
+#
+# list to screen all new commits have been created with the previous pull.
+new = !sh -c 'git log $1@{1}..$1@{0} "$@"'
+
+# log
+#
+# A Git log is a running record of commits. A full log has the following pieces:
+#
+# A commit hash (SHA1 40 character checksum of the commits contents). Because
+# it is generated based on the commit contents it is unique. Commit Author
+# metadata: The name and email address of the author of the commit. Commit Date
+# metadata: A date timestamp for the time of the commit Commit title/message:
+# The overview of the commit as written in the commit message.
+#
+# --no-walk:
+#
+# rev-list
+#
+# Lists commit objects in reverse chronological order
+#
+# HEAD
+#
+# When working with Git, only one branch can be checked out at a time - and
+# this is what's called the "HEAD" branch. Often, this is also referred to as
+# the "active" or "current" branch. Git makes note of this current branch in a
+# file located inside the Git repository, in .git/HEAD.
+#
+# tail
+#
+# first entry
+first = "!git log --no-walk `git rev-list HEAD | tail -n 1`"
+
+# log
+#
+# A Git log is a running record of commits. A full log has the following pieces:
+#
+# A commit hash (SHA1 40 character checksum of the commits contents). Because
+# it is generated based on the commit contents it is unique. Commit Author
+# metadata: The name and email address of the author of the commit. Commit Date
+# metadata: A date timestamp for the time of the commit Commit title/message:
+# The overview of the commit as written in the commit message.
+#
+# last entry
+last = log -1
+
+# log
+#
+# --summary:
+#
+# detailed log summary
+sumary = log --summary
+
+# shortlog
+#
+# -n:
+#
+# show all commits by author and count
+shortlog = shortlog -n
+
+# displays the list of commits made before X days ago.
+last-days = "!f() { \
+    git log --after=\"$(date -j -v-$1d +%Y-%m-%d)\" --oneline; \
+}; f"
+
+# }}}
+# pull {{{1
+#--------------------------------------------------------------------------
+
+# pull
+#
+# Incorporates changes from a remote repository into the current branch. If the
+# current branch is behind the remote, then by default it will fast-forward the
+# current branch to match the remote. If the current branch and the remote have
+# diverged, the user needs to specify how to reconcile the divergent branches
+# with --rebase or --no-rebase (or the corresponding configuration option in
+# pull.rebase).
+
+# More precisely, git pull runs git fetch with the given parameters and then
+# depending on configuration options or command line flags, will call either
+# git rebase or git merge to reconcile diverging branches.
+#
+# origin
+#
+# In Git, "origin" is a shorthand name for the remote repository that a project
+# was originally cloned from. More precisely, it is used instead of that
+# original repository's URL - and thereby makes referencing much easier. Note
+# that origin is by no means a "magical" name, but just a standard convention.
+#
+# master
+#
+# In Git, "master" is a naming convention for a branch. After cloning
+# (downloading) a project from a remote server, the resulting local repository
+# has a single local branch: the so-called "master" branch. This means that
+# "master" can be seen as a repository's "default" branch.
+#
+# pull from origin master
+plom = pull origin master
+
+# pull
+#
+# Incorporates changes from a remote repository into the current branch. If the
+# current branch is behind the remote, then by default it will fast-forward the
+# current branch to match the remote. If the current branch and the remote have
+# diverged, the user needs to specify how to reconcile the divergent branches
+# with --rebase or --no-rebase (or the corresponding configuration option in
+# pull.rebase).
+
+# More precisely, git pull runs git fetch with the given parameters and then
+# depending on configuration options or command line flags, will call either
+# git rebase or git merge to reconcile diverging branches.
+#
+# origin
+#
+# In Git, "origin" is a shorthand name for the remote repository that a project
+# was originally cloned from. More precisely, it is used instead of that
+# original repository's URL - and thereby makes referencing much easier. Note
+# that origin is by no means a "magical" name, but just a standard convention.
+#
+# pull from origin branch
+plob = !git pull origin $(git bc)
+
+# }}}
+# push {{{1
+#--------------------------------------------------------------------------
+
+# push
+#
+# The git push command is used to upload local repository content to a remote
+# repository. Pushing is how you transfer commits from your local repository to
+# a remote repo. It's the counterpart to git fetch , but whereas fetching
+# imports commits to local branches, pushing exports commits to remote
+# branches.
+#
+# -u:
+# --set-upstream
+#
+# For every branch that is up to date or successfully pushed, add upstream
+# (tracking) reference, used by argument-less git-pull and other commands.
+# For more information, see branch.<name>.merge in git-config.
+#
+# origin
+#
+# In Git, "origin" is a shorthand name for the remote repository that a project
+# was originally cloned from. More precisely, it is used instead of that
+# original repository's URL - and thereby makes referencing much easier. Note
+# that origin is by no means a "magical" name, but just a standard convention.
+#
+# master
+#
+# In Git, "master" is a naming convention for a branch. After cloning
+# (downloading) a project from a remote server, the resulting local repository
+# has a single local branch: the so-called "master" branch. This means that
+# "master" can be seen as a repository's "default" branch.
+#
+# push changes to origin master
+psuom = "push -u origin master"
+
+# push
+#
+# The git push command is used to upload local repository content to a remote
+# repository. Pushing is how you transfer commits from your local repository to
+# a remote repo. It's the counterpart to git fetch , but whereas fetching
+# imports commits to local branches, pushing exports commits to remote
+# branches.
+#
+#
+# -u:
+# --set-upstream
+#
+# For every branch that is up to date or successfully pushed, add upstream
+# (tracking) reference, used by argument-less git-pull and other commands.
+# For more information, see branch.<name>.merge in git-config.
+#
+# origin
+#
+# In Git, "origin" is a shorthand name for the remote repository that a project
+# was originally cloned from. More precisely, it is used instead of that
+# original repository's URL - and thereby makes referencing much easier. Note
+# that origin is by no means a "magical" name, but just a standard convention.
+#
+# push changes to origin branch
+psuob = !git push -u origin $(git bc)
+
+# }}}
+# reset {{{1
+#--------------------------------------------------------------------------
+# NOTE: Since creating i have not used any of these.
+
+# reset
+#
+# Reset current HEAD to the specified state. What this does is to move the
+# current HEAD to the commit specified
+#
+re = reset
+
+# reset
+#
+# Reset current HEAD to the specified state. What this does is to move the
+# current HEAD to the commit specified
+#
+# HEAD
+#
+# When working with Git, only one branch can be checked out at a time - and
+# this is what's called the "HEAD" branch. Often, this is also referred to as
+# the "active" or "current" branch. Git makes note of this current branch in a
+# file located inside the Git repository, in .git/HEAD.
+#
+rh = reset HEAD
+
+# reset
+# Reset current HEAD to the specified state. What this does is to move the
+# current HEAD to the commit specified
+#
+# --hard:
+#
+# Resets the index and working tree. Any changes to tracked files in the
+# working tree since <commit> are discarded. Any untracked files or directories
+# in the way of writing any tracked files are simply deleted.
+#
+reh = reset --hard
+
+# reset
+# Reset current HEAD to the specified state. What this does is to move the
+# current HEAD to the commit specified
+#
+# --mixed:
+#
+rem = reset --mixed
+
+# reset
+# Reset current HEAD to the specified state. What this does is to move the
+# current HEAD to the commit specified
+#
+# -- soft:
+#
+res = reset --soft
+
+# reset
+# Reset current HEAD to the specified state. What this does is to move the
+# current HEAD to the commit specified
+#
+# --hard:
+#
+# Resets the index and working tree. Any changes to tracked files in the
+# working tree since <commit> are discarded. Any untracked files or directories
+# in the way of writing any tracked files are simply deleted.
+#
+# HEAD
+#
+# When working with Git, only one branch can be checked out at a time - and
+# this is what's called the "HEAD" branch. Often, this is also referred to as
+# the "active" or "current" branch. Git makes note of this current branch in a
+# file located inside the Git repository, in .git/HEAD.
+#
+rehh = reset --hard HEAD
+
+# reset
+# Reset current HEAD to the specified state. What this does is to move the
+# current HEAD to the commit specified
+#
+# --mixed:
+#
+# HEAD
+#
+# When working with Git, only one branch can be checked out at a time - and
+# this is what's called the "HEAD" branch. Often, this is also referred to as
+# the "active" or "current" branch. Git makes note of this current branch in a
+# file located inside the Git repository, in .git/HEAD.
+#
+remh = reset --mixed HEAD
+
+# reset
+# Reset current HEAD to the specified state. What this does is to move the
+# current HEAD to the commit specified
+#
+# --soft:
+#
+# HEAD
+#
+# When working with Git, only one branch can be checked out at a time - and
+# this is what's called the "HEAD" branch. Often, this is also referred to as
+# the "active" or "current" branch. Git makes note of this current branch in a
+# file located inside the Git repository, in .git/HEAD.
+#
+resh = reset --soft HEAD
+
+# }}}
+# show {{{1
+#--------------------------------------------------------------------------
+
+# show
+#
+# Shows one or more objects (blobs, trees, tags and commits).
+#
+# HEAD
+#
+# When working with Git, only one branch can be checked out at a time - and
+# this is what's called the "HEAD" branch. Often, this is also referred to as
+# the "active" or "current" branch. Git makes note of this current branch in a
+# file located inside the Git repository, in .git/HEAD.
+#
+# show head only
+sh = show HEAD
+
+# show
+#
+# Shows one or more objects (blobs, trees, tags and commits).
+#
+# --all:
+#
+# show all
+sha = show --all
+
+# }}}
+# stage and unstage {{{1
+#--------------------------------------------------------------------------
+
+# log
+#
+# A Git log is a running record of commits. A full log has the following pieces:
+#
+# A commit hash (SHA1 40 character checksum of the commits contents). Because
+# it is generated based on the commit contents it is unique. Commit Author
+# metadata: The name and email address of the author of the commit. Commit Date
+# metadata: A date timestamp for the time of the commit Commit title/message:
+# The overview of the commit as written in the commit message.
+#
+# --branches:
+# --branches[=<pattern>]
+#
+# Pretend as if all the refs in refs/heads are listed on the command line as
+# <commit>. If <pattern> is given, limit branches to ones matching given shell
+# glob. If pattern lacks ?, *, or [, /* at the end is implied.
+#
+# --not:
+#
+# Reverses the meaning of the ^ prefix (or lack thereof) for all following
+# revision specifiers, up to the next --not.
+#
+# --remotes:
+#
+# show all branches that have commits waiting to be pushed
+commited-branches = !git log --branches --not --remotes
+
+# log
+#
+# A Git log is a running record of commits. A full log has the following pieces:
+#
+# A commit hash (SHA1 40 character checksum of the commits contents). Because
+# it is generated based on the commit contents it is unique. Commit Author
+# metadata: The name and email address of the author of the commit. Commit Date
+# metadata: A date timestamp for the time of the commit Commit title/message:
+# The overview of the commit as written in the commit message.
+#
+# origin
+#
+# In Git, "origin" is a shorthand name for the remote repository that a project
+# was originally cloned from. More precisely, it is used instead of that
+# original repository's URL - and thereby makes referencing much easier. Note
+# that origin is by no means a "magical" name, but just a standard convention.
+#
+#
+# HEAD
+#
+# When working with Git, only one branch can be checked out at a time - and
+# this is what's called the "HEAD" branch. Often, this is also referred to as
+# the "active" or "current" branch. Git makes note of this current branch in a
+# file located inside the Git repository, in .git/HEAD.
+#
+# show commit for branch you are currently on
+commited = !git log origin/$(git bc)..HEAD
+
+# reset
+#
+# Reset current HEAD to the specified state. What this does is to move the
+# current HEAD to the commit specified
+#
+# HEAD
+#
+# When working with Git, only one branch can be checked out at a time - and
+# this is what's called the "HEAD" branch. Often, this is also referred to as
+# the "active" or "current" branch. Git makes note of this current branch in a
+# file located inside the Git repository, in .git/HEAD.
+#
+# roll back a commit pre pushing
+uncommit = reset HEAD~
+
+# diff
+#
+# Diffing is a function that takes two input data sets and outputs the changes
+# between them. git diff is a multi-use Git command that when executed runs a
+# diff function on Git data sources. These data sources can be commits,
+# branches, files and more.
+#
+# --stat:
+# --stat[=<width>[,<name-width>[,<count>]]]
+#
+# Generate a diffstat. By default, as much space as necessary will be used for
+# the filename part, and the rest for the graph part. Maximum width defaults to
+# terminal width, or 80 columns if not connected to a terminal, and can be
+# overridden by <width>. The width of the filename part can be limited by
+# giving another width <name-width> after a comma. The width of the graph part
+# can be limited by using --stat-graph-width=<width> (affects all commands
+# generating a stat graph) or by setting diff.statGraphWidth=<width> (does not
+# affect git format-patch). By giving a third parameter <count>, you can limit
+# the output to the first <count> lines, followed by ... if there are more.
+#
+# --cached:
+#
+# origin
+#
+# In Git, "origin" is a shorthand name for the remote repository that a project
+# was originally cloned from. More precisely, it is used instead of that
+# original repository's URL - and thereby makes referencing much easier. Note
+# that origin is by no means a "magical" name, but just a standard convention.
+#
+# show staged changes for branch
+staged = !git diff --stat --cached origin/$(git bc)
+
+# reset
+#
+#
+# HEAD
+#
+# When working with Git, only one branch can be checked out at a time - and
+# this is what's called the "HEAD" branch. Often, this is also referred to as
+# the "active" or "current" branch. Git makes note of this current branch in a
+# file located inside the Git repository, in .git/HEAD.
+#
+# unstage pre commit
+unstage = reset HEAD --
+
+# reset
+#
+# --soft:
+#
+# HEAD
+#
+# When working with Git, only one branch can be checked out at a time - and
+# this is what's called the "HEAD" branch. Often, this is also referred to as
+# the "active" or "current" branch. Git makes note of this current branch in a
+# file located inside the Git repository, in .git/HEAD.
+#
+# undo
+undo = reset --soft HEAD^
+
+# }}}
+# stash {{{1
+#--------------------------------------------------------------------------
+# When using stash. Files should be staged.
+# When accessing the stack <number>
+
+# when stashing, the files being worked on will revert to the state of the
+# last commit until the stash apply <number> is ran.
+
+# lists the stashed stack
+stashed = stash list
+
+# reopens the first stash on the stack if no argument is given, if an
+# argument is given it takes an index: example, git stash apply stash@{2}
+stash-open = stash apply
+
+# Creates and checks out a new branch named <branchname> starting from
+# the commit at which the <stash> was originally created, applies the
+# changes recorded in <stash> to the new working tree and index. If that
+# succeeds, and <stash> is a reference of the form stash@{<revision>},
+# it then drops the <stash>. When no <stash> is given, applies the latest one.
+# example: git sb <branch name> stash@{<number>}
+sb = stash branch
+
+# stash
+#
+# push
+#
+# Save your local modifications to a new stash entry and roll them back to
+# HEAD (in the working tree and in the index). The <message> part is optional and
+# gives the description along with the stashed state.
+stash-push = stash push
+
+# If the --include-untracked option is used, all untracked files are also
+# stashed and then cleaned up with git clean, leaving the working directory
+# in a very clean state. the --all option is used instead then the ignored
+# files are stashed and cleaned in addition to the untracked files.
+stash-all = stash push --include-untracked
+
+# run git stash pop to apply the stash and then immediately drop it from your stack.
+spop = stash pop
+
+# Remove all the stash entries
+stash-clear = stash clear
+
+# Remove a single stash entry from the list of stash entries.
+# When no <stash> is given, it removes the latest one
+sdrop = stash drop
+
+# Show the changes recorded in the stash entry as a diff between the
+# stashed contents and the commit back when the stash entry was first created
+# add -p to show the verbose changes.
+ss = stash show
+ssf = stash show -p
+
+# count how many stashes there are.
+stash-count = !git stash list | wc -l 2>/dev/null | grep -oEi '[0-9][0-9]*'
+
+# }}}
+# submodules {{{1
+#--------------------------------------------------------------------------
+
+# add submodule from remote repo git subadd <user-name>/<repo-name>
+# root-to-bundle from base dir.
+# example: git subadd shadow-chasing/headfuck vim/bundle
+subadd = !sh -c 'git submodule add git://github.com/$1 $2/$(basename $1)' -
+
+# submodule
+#
+# A submodule is a repository embedded inside another repository. The submodule
+# has its own history; the repository it is embedded in is called a
+# superproject.
+
+# On the filesystem, a submodule usually (but not always - see FORMS below)
+# consists of (i) a Git directory located under the $GIT_DIR/modules/ directory
+# of its superproject, (ii) a working directory inside the superproject’s
+# working directory, and a .git file at the root of the submodule’s working
+# directory pointing to (i).
+#
+# Assuming the submodule has a Git directory at $GIT_DIR/modules/foo/ and a
+# working directory at path/to/bar/, the superproject tracks the submodule via
+# a gitlink entry in the tree at path/to/bar and an entry in its .gitmodules
+# file of the form submodule.foo.path = path/to/bar.
+#
+# The gitlink entry contains the object name of the commit that the
+# superproject expects the submodule’s working directory to be at.
+#
+# The section submodule.foo.* in the .gitmodules file gives additional hints to
+# Git’s porcelain layer. For example, the submodule.foo.url setting specifies
+# where to obtain the submodule.
+#
+# update
+#
+# --init:
+#
+# --recursive:
+#
+# update the submodules
+subup = submodule update --init --recursive
+
+# submodule
+#
+# A submodule is a repository embedded inside another repository. The submodule
+# has its own history; the repository it is embedded in is called a
+# superproject.
+
+# On the filesystem, a submodule usually (but not always - see FORMS below)
+# consists of (i) a Git directory located under the $GIT_DIR/modules/ directory
+# of its superproject, (ii) a working directory inside the superproject’s
+# working directory, and a .git file at the root of the submodule’s working
+# directory pointing to (i).
+#
+# Assuming the submodule has a Git directory at $GIT_DIR/modules/foo/ and a
+# working directory at path/to/bar/, the superproject tracks the submodule via
+# a gitlink entry in the tree at path/to/bar and an entry in its .gitmodules
+# file of the form submodule.foo.path = path/to/bar.
+#
+# The gitlink entry contains the object name of the commit that the
+# superproject expects the submodule’s working directory to be at.
+#
+# The section submodule.foo.* in the .gitmodules file gives additional hints to
+# Git’s porcelain layer. For example, the submodule.foo.url setting specifies
+# where to obtain the submodule.
+#
+# foreach
+#
+# pull
+#
+# Incorporates changes from a remote repository into the current branch. If the
+# current branch is behind the remote, then by default it will fast-forward the
+# current branch to match the remote. If the current branch and the remote have
+# diverged, the user needs to specify how to reconcile the divergent branches
+# with --rebase or --no-rebase (or the corresponding configuration option in
+# pull.rebase).
+
+# More precisely, git pull runs git fetch with the given parameters and then
+# depending on configuration options or command line flags, will call either
+# git rebase or git merge to reconcile diverging branches.
+#
+# --tags
+#
+# origin
+#
+# In Git, "origin" is a shorthand name for the remote repository that a project
+# was originally cloned from. More precisely, it is used instead of that
+# original repository's URL - and thereby makes referencing much easier. Note
+# that origin is by no means a "magical" name, but just a standard convention.
+#
+# master
+#
+# In Git, "master" is a naming convention for a branch. After cloning
+# (downloading) a project from a remote server, the resulting local repository
+# has a single local branch: the so-called "master" branch. This means that
+# "master" can be seen as a repository's "default" branch.
+#
+# re-clone each of the listed modules
+subpull = !git submodule foreach git pull --tags origin master
+
+# }}}
+# tag {{{1
+
+# tag
+#
+# Create, list, delete or verify a tag object signed with GPG
+#
+t = tag
+
+# }}}
+# tasks {{{1
+#--------------------------------------------------------------------------
+
+# grep
+#
+# --extended-regexp:
+#
+# Consider the limiting patterns to be extended regular expressions instead of
+# the default basic regular expressions.
+#
+# -I:
+#
+# --line-number:
+#
+# --break:
+#
+# --heading:
+#
+# --color:
+#
+# Source: http://www.commandlinefu.com/commands/view/12842/get-a-list-of-all-todofixme-tasks-left-to-be-done-in-your-git-project
+tasks = grep --extended-regexp -I --line-number --break --heading --color=auto "TODO|FIXME|NOTE"
+
+# grep
+#
+# --extended-regexp:
+#
+# Consider the limiting patterns to be extended regular expressions instead of
+# the default basic regular expressions.
+#
+# -I:
+#
+# --line-number:
+#
+# --count:
+#
+tasks-count = grep --extended-regexp -I --line-number --count "TODO|FIXME|NOTE"
+
+# }}}
+# up and update {{{1
+
+# pull
+#
+# Incorporates changes from a remote repository into the current branch. If the
+# current branch is behind the remote, then by default it will fast-forward the
+# current branch to match the remote. If the current branch and the remote have
+# diverged, the user needs to specify how to reconcile the divergent branches
+# with --rebase or --no-rebase (or the corresponding configuration option in
+# pull.rebase).
+
+# More precisely, git pull runs git fetch with the given parameters and then
+# depending on configuration options or command line flags, will call either
+# git rebase or git merge to reconcile diverging branches.
+#
+# --rebase:
+# --rebase[=false|true|merges|interactive]
+#
+# When true, rebase the current branch on top of the upstream branch after
+# fetching. If there is a remote-tracking branch corresponding to the upstream
+# branch and the upstream branch was rebased since last fetched, the rebase
+# uses that information to avoid rebasing non-local changes.
+#
+# --prune:
+#
+# Before fetching, remove any remote-tracking references that no longer exist
+# on the remote. Tags are not subject to pruning if they are fetched only
+# because of the default tag auto-following or due to a --tags option. However,
+# if tags are fetched due to an explicit refspec (either on the command line or
+# in the remote configuration, for example if the remote was cloned with the
+# --mirror option), then they are also subject to pruning. Supplying
+# --prune-tags is a shorthand for providing the tag refspec.
+#
+# Pulls changes from the remote. Local commits will be rebased. The --prune
+# option removes remote-tracking branches that no longer exist on the remote.
+up = pull --rebase --prune
+
+# remote
+#
+# update
+#
+# Sync the loacal and remote.
+update = remote update
+
+# }}}
+# wipe {{{1
+
+# add
+#
+# This command updates the index using the current content found in the working
+# tree, to prepare the content staged for the next commit. It typically adds
+# the current content of existing paths as a whole, but with some options it
+# can also be used to add content with only part of the changes made to the
+# working tree files applied, or remove paths that do not exist in the working
+# tree anymore.
+#
+# -A:
+#
+# --all
+#
+# Update the index not only where the working tree has a file matching
+# <pathspec> but also where the index already has an entry. This adds,
+# modifies, and removes index entries to match the working tree.
+#
+# commit
+#
+# Create a new commit containing the current contents of the index and the
+# given log message describing the changes. The new commit is a direct child of
+# HEAD, usually the tip of the current branch, and the branch is updated to
+# point to it (unless no branch is associated with the working tree, in which
+# case HEAD is "detached" as described in git-checkout).
+#
+# -q:
+# --quiet
+#
+# Suppress commit summary message.
+#
+# -m:
+# --message=<msg>
+#
+# Use the given <msg> as the commit message. If multiple -m options are given,
+# their values are concatenated as separate paragraphs.
+# reset
+#
+# HEAD
+#
+# When working with Git, only one branch can be checked out at a time - and
+# this is what's called the "HEAD" branch. Often, this is also referred to as
+# the "active" or "current" branch. Git makes note of this current branch in a
+# file located inside the Git repository, in .git/HEAD.
+#
+# --hard
+#
+# Resets the index and working tree. Any changes to tracked files in the
+# working tree since <commit> are discarded. Any untracked files or directories
+# in the way of writing any tracked files are simply deleted.
+#
+#
+# wipe adds all and commits with a default message. then resets the head
+# removing the commit and reverting to last state. the commit is removed from
+# the log though it can still be found by,
+# git reflog under the default message "WIPE SAVEPOINT"
+wipe = !git add -A && git commit -qm 'WIPE SAVEPOINT' && git reset HEAD~1 --hard
+
+# }}}
+# Z Used in function {{{1
+
+# rev-parse
+#
+# Many Git porcelainish commands take mixture of flags (i.e. parameters that
+# begin with a dash -) and parameters meant for the underlying git rev-list
+# command they use internally and flags and parameters for the other commands
+# they use downstream of git rev-list. This command is used to distinguish
+# between them.
+#
+# --abbrev-ref:
+# --abbrev-ref[=(strict|loose)]
+#
+# A non-ambiguous short name of the objects name. The option
+# core.warnAmbiguousRefs is used to select the strict abbreviation mode.
+#
+# --symbolic-full-name:
+#
+# This is similar to --symbolic, but it omits input that are not refs (i.e.
+# branch or tag names; or more explicitly disambiguating "heads/master" form,
+# when you want to name the "master" branch when there is an unfortunately
+# named tag "master"), and show them as full refnames (e.g.
+# "refs/heads/master").
+#
+# *must keep* used in behind and ahead
+bu = !git rev-parse --abbrev-ref --symbolic-full-name "@{u}"
+
+# rev-parse
+#
+# Many Git porcelainish commands take mixture of flags (i.e. parameters that
+# begin with a dash -) and parameters meant for the underlying git rev-list
+# command they use internally and flags and parameters for the other commands
+# they use downstream of git rev-list. This command is used to distinguish
+# between them.
+#
+# --abbrev-ref:
+# --abbrev-ref[=(strict|loose)]
+#
+# A non-ambiguous short name of the objects name. The option
+# core.warnAmbiguousRefs is used to select the strict abbreviation mode.
+#
+# HEAD
+#
+# When working with Git, only one branch can be checked out at a time - and
+# this is what's called the "HEAD" branch. Often, this is also referred to as
+# the "active" or "current" branch. Git makes note of this current branch in a
+# file located inside the Git repository, in .git/HEAD.
+#
+# *warning* branch current - used in functions
+bc = rev-parse --abbrev-ref HEAD
+
+# }}}
