@@ -83,26 +83,5 @@ require('telescope').setup{
 
 require("telescope").load_extension "file_browser"
 
-
--- Personal Functions
-
-local M = {} -- Assign an empty table to the local variable M
-
--- Search Notes
-
-function M.search_notes()
-  require("telescope.builtin").find_files {
-    cwd = "$HOME/.notes",
-    prompt_title = "< Notes >",
-    prompt_prefix = "❯",
-    results_title = "Found Files",
-    path_display = { "smart" },
-  }
-end
-
--- Since the M table is scoped, it has to be returned for usage elsewhere
-
-return M
-
 EOF
 

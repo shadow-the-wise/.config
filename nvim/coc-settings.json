@@ -68,15 +68,16 @@
     // formatting when save
     "coc.preferences.formatOnSaveFiletypes": [
         "css",
-        "scss",
-        "json",
-        "yaml",
-        "ruby",
-        "rb",
-        "markdown",
-        "lua",
         "javascript",
-        "python"
+        "json",
+        "lua",
+        "lua",
+        "markdown",
+        "python",
+        "rb",
+        "ruby",
+        "scss",
+        "yaml"
     ],
     // solargraph formatting and rubocop does linting
     "solargraph.hover": true,

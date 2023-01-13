@@ -692,11 +692,6 @@ let g:coc_filetype_map = {
 runtime ./colors/custom-highlight-colors.vim
 
 " }}}
-" indent exclude {{{2
-
-let g:indent_blankline_filetype_exclude = ['help', "checkhealth", "man", "md", "markdown", "txt", "vim"]
-
-" }}}
 " raindow parenth {{{2
 
 " let g:ada_rainbow_color = "true"
