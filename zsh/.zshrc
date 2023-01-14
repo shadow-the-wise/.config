@@ -142,16 +142,15 @@ fi;
 #------------------------------------------------------------------------------
 unicode_char="❯"
 div=""
+
 pre_upper="╭─"
 pre_lower="╰─"
-prompt_apple="%K{blue} %F{white}%f %k"
-prompt_date="%F{blue}%D{%A, %d %b}%f"
-prompt_time="%F{white}%D{%l:%M %p}%f"
-prompt_jobs="[%F{green}%j%f]"
-prompt_at="%F{blue}@%f"
-prompt_machine="%F{blue}%m%f"
-prompt_symbol="%F{white}${unicode_char}${unicode_char}%f"
-prompt_exit_code=" %(?.%F{blue}.%F{red})❯%f"
+
+local date="%D{%A, %d %b}"
+local prompt_time="%D{%l:%M %p}"
+local prompt_jobs="%j"
+local machine="%m"
+local exit_code=" %(?.%F{blue}.%F{red})❯%f"
 
 # }}}
 # Git Prompt {{{2
@@ -164,15 +163,14 @@ function parse_git_branch() {
     OUTPUT=$(git branch 2> /dev/null)
   if [[ $? -eq 0 ]]; then
     local EXIT_CODE_PROMPT=''
-    EXIT_CODE_PROMPT+="%K{cyan}%F%(5~|%-1~/…/%3~|%4~)%k%K%F{cyan}${div}%f%k"
-    EXIT_CODE_PROMPT+="%K git:("
-    EXIT_CODE_PROMPT+="%F{green}$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')%f"
-    EXIT_CODE_PROMPT+=")%k%K{black}%F${div}%f%k"
+    EXIT_CODE_PROMPT+="%K{#1F7FCF}%F%(5~|%-1~/…/%3~|%4~)%f%k"
+    EXIT_CODE_PROMPT+="%K{5A5C5C}%F{#1F7FCF}${div}%f%k"
+    EXIT_CODE_PROMPT+="%K{#5A5C5C} git:(%F{green}$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')%f)%k"
+    EXIT_CODE_PROMPT+="%K{#002B36}%F{#5A5C5C}${div}%f%k"
     echo "$EXIT_CODE_PROMPT"
   else
     local NO_GIT=''
-    NO_GIT+="%K{cyan}%F%(5~|%-1~/…/%3~|%4~)"
-    NO_GIT+="%K%F{cyan}${div}%f%k"
+    NO_GIT+="%K{#1F7FCF}%F%(5~|%-1~/…/%3~|%4~)%f %K{#002B36}%F{#1F7FCF}${div}%f%k"
     echo "$NO_GIT"
   fi
 }
@@ -206,25 +204,33 @@ function ahead_behind {
 # }}}
 # basic layout {{{2
 # ------------------------------------------------------------------------------
-# apple logo and date
-# time
-# jobs
-# user, @, machine
-basic="${prompt_apple}%K{white} ${prompt_date}%k%K{blue}%F{white}${div}%f%k\
-%K{blue}%F{white}${prompt_time}%f%k%K{black}%F{blue}${div}%f%k\
-%K{black}${prompt_jobs}%k\
-%K ${prompt_user}${prompt_at}${prompt_machine}%k%K{cyan}%F${div}%f%k"
-# }}}
-# PS1 {{{2
-#------------------------------------------------------------------------------
+# %k = background color and is delimited with the lowercase version %k
+# %F = foreground color and is delimited with the lowercase version %f
+#
+# #102F7E - dark purple
+# #10509F - blue
+# #1F7FCF - light blue
+# 11408D
+
+# Date and Time
+local basic="%K{#11408D}%F{white} ${date} ${prompt_time}%f%k"
+basic+="%K{#10509F}%F{#11408D}${div}%f%k"
+# Jobs
+basic+="%K{#10509F}[%F{green}${prompt_jobs}%f]%k"
+# User @ Machine
+basic+="%K{#10509F} ${prompt_user}%F{blue}@${machine}%f%k"
+basic+="%F{#10509F}%K{blue}$div%k%f"
+
 # define a function that sets PS1, then add that function to the
 # precmd_functions array so that it is executed prior to displaying each
 # prompt.
+
 prompt () {
-export PS1="
+PS1="
 ${pre_upper}${basic}$(parse_git_branch)${commits}$(ahead_behind)
-${pre_lower}${prompt_exit_code}${prompt_symbol}"
+${pre_lower}${exit_code} "
 }
+
 precmd_functions+=(prompt)
 
 #}}}
@@ -570,6 +576,7 @@ printf "  \______________________________/%s\n"
 
 
 # }}}
+#
 # Source {{{1
 #-------------------------------------------------------------------------------
 
