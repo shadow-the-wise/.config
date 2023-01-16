@@ -1,7 +1,7 @@
 #==============================================================================
 # Version:2.0
 # Author: Shadow
-# Last Update: 2023-01-05 04:32
+# Last Update: 2023-01-14 21:19
 #==============================================================================
 # ZSHRC
 #==============================================================================
@@ -163,14 +163,14 @@ function parse_git_branch() {
     OUTPUT=$(git branch 2> /dev/null)
   if [[ $? -eq 0 ]]; then
     local EXIT_CODE_PROMPT=''
-    EXIT_CODE_PROMPT+="%K{#1F7FCF}%F%(5~|%-1~/…/%3~|%4~)%f%k"
-    EXIT_CODE_PROMPT+="%K{5A5C5C}%F{#1F7FCF}${div}%f%k"
+    EXIT_CODE_PROMPT+="%K{#1F7FCF}%F{#102040}%(5~|%-1~/…/%3~|%4~)%f%k"
+    EXIT_CODE_PROMPT+="%K{#5A5C5C}%F{#1F7FCF}${div}%f%k"
     EXIT_CODE_PROMPT+="%K{#5A5C5C} git:(%F{green}$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')%f)%k"
     EXIT_CODE_PROMPT+="%K{#002B36}%F{#5A5C5C}${div}%f%k"
     echo "$EXIT_CODE_PROMPT"
   else
     local NO_GIT=''
-    NO_GIT+="%K{#1F7FCF}%F%(5~|%-1~/…/%3~|%4~)%f %K{#002B36}%F{#1F7FCF}${div}%f%k"
+    NO_GIT+="%K{#1F7FCF}%F{#102040}%(5~|%-1~/…/%3~|%4~)%f%k%K{#002B36}%F{#1F7FCF}${div}%f%k"
     echo "$NO_GIT"
   fi
 }
@@ -234,18 +234,6 @@ ${pre_lower}${exit_code} "
 precmd_functions+=(prompt)
 
 #}}}
-# }}}
-# Set Title {{{1
-
-# When directory is changed set xterm title to host:dir
-chpwd() {
-	[[ -t 1 ]] || return
-	case $TERM in
-	sun-cmd) print -Pn "\e]l%~\e\\";;
-		*xterm*|rxvt|(dt|k|E)term) print -Pn "\e]2;%m:%~\a";;
-	esac
-}
-
 # }}}
 # History {{{1
 #------------------------------------------------------------------------------
@@ -576,7 +564,6 @@ printf "  \______________________________/%s\n"
 
 
 # }}}
-#
 # Source {{{1
 #-------------------------------------------------------------------------------
 
