@@ -44,6 +44,46 @@ function M.search_tags()
   }
 end
 
+-- Home directory
+
+function M.browse_home()
+  require("telescope").extensions.file_browser.file_browser {
+    prompt_title = "Home Directory",
+    prompt_prefix = "❯",
+    cwd = "$HOME",
+  }
+end
+
+-- Config
+
+function M.browse_config()
+  require("telescope").extensions.file_browser.file_browser {
+    prompt_title = "Browse Config",
+    prompt_prefix = "❯",
+    cwd = "$HOME/.config",
+  }
+end
+
+-- Sites
+
+function M.browse_sites()
+  require("telescope").extensions.file_browser.file_browser {
+    prompt_title = "Browse Sites",
+    prompt_prefix = "❯",
+    cwd = "$HOME/Sites",
+  }
+end
+
+-- Projects
+
+function M.browse_projects()
+  require("telescope").extensions.file_browser.file_browser {
+    prompt_title = "Browse Projects",
+    prompt_prefix = "❯",
+    cwd = "$HOME/Code/Ruby/Projects",
+  }
+end
+
 -- Since the M table is scoped, it has to be returned for usage elsewhere
 
 return M
