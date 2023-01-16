@@ -1,16 +1,17 @@
 " mru
 nnoremap <leader>m <cmd>Telescope oldfiles<cr>
 
+" file browser
+nnoremap <leader>fb <cmd>Telescope file_browser<cr>
+
+" buffers
+nnoremap <leader>b <cmd>Telescope buffers<cr>
+
 " find files
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 
 " help tags
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-
-" file browser
-nnoremap <leader>fb <cmd>Telescope file_browser<cr>
-
-" nnoremap <leader>ll <cmd>:lua require("telescope.builtin").find_files({ prompt_title = "< Notes >", cwd = "$HOME/.notes", })<cr>
 
 lua << EOF
 
@@ -50,7 +51,6 @@ require('telescope').setup{
         preview_cutoff = 40,
         prompt_position = "bottom",
         width = 0.8
-
       },
     },
     file_sorter =  require'telescope.sorters'.get_fuzzy_file,
@@ -75,13 +75,66 @@ require('telescope').setup{
       theme = "ivy",
       -- disables netrw and use telescope-file-browser in its place
       hijack_netrw = true,
+      mappings = {
+        ["n"] = {
+            -- Unmap tab. It can select files and directories without meaning
+            -- to if used to navigate the browser dir structure. When using
+            -- remove the dirs selected will be deleted along with the intentinal
+            -- files or directory.
+            ["<Tab>"] = false,
+            ["<S-Tab>"] = false,
+        },
+      },
     },
+    command_palette = {
+      {"Bookmarks",
+        { "Browse Notes", ":lua require('utils').browse_notes()"},
+        { "Search Notes", ":lua require('utils').search_notes()"},
+        { "Browse Home", ":lua require('utils').browse_home()"},
+        { "Browse Config", ":lua require('utils').browse_config()"},
+        { "Browse Sites", ":lua require('utils').browse_sites()"},
+        { "Browse Projects", ":lua require('utils').browse_projects()"},
+      },
+      {"Neovim",
+         { "Reload Neovim", ":source $MYVIMRC"},
+         { "Check Health", ":checkhealth" },
+      },
+      {"File",
+        { "save current file", ':w' },
+        { "quit", ':qa' },
+      },
+      {"History",
+          {"Command History", ":lua require('telescope.builtin').command_palette"},
+          {"Search History", ":lua require('telescope.builtin').search_history"},
+      },
+      {"Telescope",
+        { "Projects", ":lua require('telescope').extensions.project.project{}"},
+        { "MRU", ":lua require('telescope.builtin').oldfiles()"},
+        { "File Browser", ":lua require('telescope').extensions.file_browser.file_browser()"},
+        { "Find Files", ":lua require('telescope.builtin').find_files()"},
+        { "Fuzzy Find Infile", ":lua require('telescope.builtin').current_buffer_fuzzy_find()" },
+        { "Jump List", ":lua require('utils').search_jumps()"},
+        { "Marks List", ":lua require('telescope.builtin').marks()"},
+        { "Tags - Current Directory",  ":lua require('utils').search_tags()"},
+        { "Tags - Current Files", ":lua require('telescope.builtin').tagstack()"},
+      },
+      {"LSP",
+        { "LSP References", ":lua require('telescope.builtin').lsp_references()"},
+        { "LSP Definitions", ":lua require('telescope.builtin').lsp_definitions()"},
+        { "LSP Type Definitions", ":lua require('telescope.builtin').lsp_type_definitions()"},
+        { "LSP Implementations", ":lua require('telescope.builtin').lsp_implementations()"},
+        { "LSP Document Symbol", ":lua require('telescope.builtin').lsp_document_symbols()"},
+        --{ "Location List", ":lua require('telescope.builtin').loclist()" },
+      },
+    }
   },
 }
 
 -- File Browser Extension
 
 require("telescope").load_extension "file_browser"
+
+require('telescope').load_extension('command_palette')
 
 EOF
 
