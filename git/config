@@ -26,7 +26,7 @@
 # }}}
 # template {{{1
 [init]
-    templatedir = "$XDG_CONFIG_HOME/git/git_template"
+    templatedir = "/Users/shadowchaser/.config/git/git_template/"
 # }}}
 # Core {{{1
 #------------------------------------------------------------------------------
