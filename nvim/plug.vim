@@ -13,47 +13,41 @@ endif
 "
 call plug#begin("$XDG_DATA_HOME/nvim/plugged")
 
-"------------------------------------------------------------------------------
-" Git
-"------------------------------------------------------------------------------
+"   [Git]
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 
-"------------------------------------------------------------------------------
-" Snippets
-"------------------------------------------------------------------------------
+"   [Snippets]
 Plug 'honza/vim-snippets'
 
 if has("nvim")
 
-"------------------------------------------------------------------------------
-"   Indenting
-"------------------------------------------------------------------------------
+"   [Indenting]
     Plug 'lukas-reineke/indent-blankline.nvim'
-"------------------------------------------------------------------------------
-"   ColorScheme
-"------------------------------------------------------------------------------
+
+"   [ColorScheme]
     Plug 'overcache/NeoSolarized'
-"------------------------------------------------------------------------------
-"   Braces
-"------------------------------------------------------------------------------
+
+"   [Braces]
     Plug 'frazrepo/vim-rainbow'
-"------------------------------------------------------------------------------
-"   Navigation
-"------------------------------------------------------------------------------
+
+"   [Navigation]
     Plug 'nvim-telescope/telescope.nvim'
     Plug 'nvim-telescope/telescope-file-browser.nvim'
-    Plug 'nvim-telescope/telescope-project.nvim'
+    "Plug 'nvim-telescope/telescope-project.nvim'
 
+"   [Page Navigation]
     Plug 'rhysd/clever-f.vim'
     Plug 'phaazon/hop.nvim'
 
     Plug 'nvim-lua/plenary.nvim'
-"------------------------------------------------------------------------------
-"  Complation
-"------------------------------------------------------------------------------
-    " Use release branch (recommend)
+
+"   [Command Pallette]
+    Plug 'LinArcX/telescope-command-palette.nvim'
+
+"   [Complation]
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 endif
 
 
