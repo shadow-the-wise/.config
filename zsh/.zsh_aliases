@@ -130,9 +130,9 @@ alias za="v $(find $ZDOTDIR/.zsh_aliases)"
 # pattern.
 
 # text and programing
-alias -s txt="$EDITOR"
-alias -s md="$EDITOR"
-alias -s rb="$EDITOR"
+# alias -s txt="$EDITOR"
+# alias -s md="$EDITOR"
+# alias -s rb="$EDITOR"
 # alias -s zsh="$EDITOR"
 # alias -s sh="$EDITOR"
 # alias -s vim="$EDITOR"

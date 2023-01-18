@@ -1,17 +1,17 @@
 " mru
-nnoremap <leader>m <cmd>Telescope oldfiles<cr>
+" nnoremap <leader>m <cmd>Telescope oldfiles<cr>
 
 " file browser
-nnoremap <leader>fb <cmd>Telescope file_browser<cr>
+" nnoremap <leader>fb <cmd>Telescope file_browser<cr>
 
 " buffers
-nnoremap <leader>b <cmd>Telescope buffers<cr>
+" nnoremap <leader>b <cmd>Telescope buffers<cr>
 
 " find files
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
+" nnoremap <leader>ff <cmd>Telescope find_files<cr>
 
 " help tags
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+" nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 lua << EOF
 
@@ -108,7 +108,6 @@ require('telescope').setup{
           {"Search History", ":lua require('telescope.builtin').search_history"},
       },
       {"Telescope",
-        { "Projects", ":lua require('telescope').extensions.project.project{}"},
         { "MRU", ":lua require('telescope.builtin').oldfiles()"},
         { "File Browser", ":lua require('telescope').extensions.file_browser.file_browser()"},
         { "Find Files", ":lua require('telescope.builtin').find_files()"},

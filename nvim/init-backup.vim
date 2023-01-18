@@ -408,56 +408,56 @@ nnoremap <leader>er :vsplit $MYVIMRC<cr>
 " }}}
 " navigation {{{2
 " keep hands on the homerow
-" inoremap jj <Esc>
+inoremap jj <Esc>
 
 " Make j and k work well on wrapped lines
-" noremap j gj
-" noremap k gk
+noremap j gj
+noremap k gk
 
 " Shift-h/l to the beginning and end of the line
-" nnoremap H ^
-" nnoremap L g_
+nnoremap H ^
+nnoremap L g_
 
 " Control-h/l To the beginning and end of the line in command mode
-" cnoremap <C-h> <home>
-" cnoremap <C-l> <end>
+cnoremap <C-h> <home>
+cnoremap <C-l> <end>
 
 " Control-j/k jump through the change list, to last inserts point.
-" nnoremap <UP> g;
-" nnoremap <DOWN> g,
+nnoremap <UP> g;
+nnoremap <DOWN> g,
 
 " cotrol jkhl to navigate split
-" nnoremap <C-j> <C-w>j
-" nnoremap <C-k> <C-w>k
-" nnoremap <C-h> <C-w>h
-" nnoremap <C-l> <C-w>l
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
 
 " }}}
 " resize {{{2
-" nnoremap <S-Up> :resize +2<CR>
-" nnoremap <S-Down> :resize -2<CR>
-" nnoremap <S-Left> :vertical resize +2<CR>
-" nnoremap <S-Right> :vertical resize -2<CR>
+nnoremap <S-Up> :resize +2<CR>
+nnoremap <S-Down> :resize -2<CR>
+nnoremap <S-Left> :vertical resize +2<CR>
+nnoremap <S-Right> :vertical resize -2<CR>
 
 " }}}
 " search {{{2
 
 " Keep search matches in the middle of the window.
-" nnoremap n nzzzv
-" nnoremap N Nzzzv
+nnoremap n nzzzv
+nnoremap N Nzzzv
 
 " When using star to search for a word. Do not jump on match
-" nnoremap * *<c-o>
+nnoremap * *<c-o>
 
 " When jumping center the line.
-" nnoremap <c-o> <c-o>zz
-" nnoremap <c-i> <c-i>zz
+nnoremap <c-o> <c-o>zz
+nnoremap <c-i> <c-i>zz
 
 " Reopen the last search in a QuickFix window
 " nnoremap <silent><leader>/ : execute 'vimgrep / '.@/.'/g %'<CR>:copen<CR>
 
-"nnoremap g; g;zz
-"nnoremap g, g,zz
+nnoremap g; g;zz
+nnoremap g, g,zz
 
 
 " clear highlights
@@ -473,35 +473,35 @@ set pastetoggle=<F1>
 
 " }}}
 " spaces to tabs {{{2
-"nnoremap <leader><TAB> :set et! list!<CR>
+nnoremap <leader><TAB> :set et! list!<CR>
 
 " }}}
 " coc {{{2
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
 
-" if has('nvim')
+if has('nvim')
 "
-    " nmap <silent> [g <Plug>(coc-diagnostic-prev)
-    " nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+"  GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" navigate diagnostics
+
+nmap <leader>rn <Plug>(coc-rename)
 "
-    "  GoTo code navigation.
-    " nmap <silent> gd <Plug>(coc-definition)
-    " nmap <silent> gy <Plug>(coc-type-definition)
-    " nmap <silent> gi <Plug>(coc-implementation)
-    " nmap <silent> gr <Plug>(coc-references)
-    "  navigate diagnostics
-"
-    " nmap <leader>rn <Plug>(coc-rename)
-"
-    "  refactor and rename symbol
-    " nnoremap <silent>r <plug>(coc-refactor)
-"
-    " nnoremap <silent> <leader>a :CocList diagnostics<cr>
-    " nnoremap <silent> <leader>o :CocList outline<cr>
-    " nnoremap <silent> <leader>s :CocList -I symbols<cr>
-"
-" endif
+" refactor and rename symbol
+nnoremap <silent>r <plug>(coc-refactor)
+nnoremap <silent> <leader>a :CocList diagnostics<cr>
+nnoremap <silent> <leader>o :CocList outline<cr>
+nnoremap <silent> <leader>s :CocList -I symbols<cr>
+
+endif
 
 " <leader> rb is a refactor
 

@@ -1,0 +1,8 @@
+#!/usr/bin/env zsh
+
+function chpwdls {
+    clear
+    ls -la
+}
+
+add-zsh-hook -Uz chpwd chpwdls

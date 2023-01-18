@@ -219,7 +219,7 @@ basic+="%K{#10509F}%F{#11408D}${div}%f%k"
 basic+="%K{#10509F}[%F{green}${prompt_jobs}%f]%k"
 # User @ Machine
 basic+="%K{#10509F} ${prompt_user}%F{blue}@${machine}%f%k"
-basic+="%F{#10509F}%K{blue}$div%k%f"
+basic+="%F{#10509F}%K{#1F7FCF}$div%k%f"
 
 # define a function that sets PS1, then add that function to the
 # precmd_functions array so that it is executed prior to displaying each
