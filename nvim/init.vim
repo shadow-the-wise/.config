@@ -11,6 +11,7 @@
 " XDG_DATA_HOME = ~/.local/share/
 
 "==============================================================================
+" Vimscript
 " plugins {{{1
 " runtime {{{2
 
@@ -31,6 +32,7 @@ runtime ./coc-install.vim
 
 " Custom abbreviations for vim
 runtime ./abbrev.vim
+
 
 " }}}
 " auto install plugins {{{2
@@ -75,7 +77,7 @@ syntax enable
 " (terminal/GUI) background looks like. See |:hi-normal| if you want to set the background color
 " explicitly.
 set background=dark
-colorscheme NeoSolarized
+" colorscheme NeoSolarized
 
 if has('gui_running')
     set background=dark
@@ -151,18 +153,19 @@ set ruler
 " statusline {{{1
 
 " set up a basic statusline
-set statusline=
-set statusline+=%#PmenuSel#
-set statusline+=%#LineNr#
-set statusline+=\ %f
-set statusline+=%m
-set statusline+=%=
-set statusline+=%#CursorColumn#
-set statusline+=\ %y
-set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
-set statusline+=\[%{&fileformat}\]
-set statusline+=\ %p%%
-set statusline+=\ %l:%c
+"set statusline=
+"set statusline+=%#PmenuSel#
+"set statusline+=%#LineNr#
+"set statusline+=\ %f
+"set statusline+=%m
+"set statusline+=%=
+"set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+"set statusline+=%#CursorColumn#
+"set statusline+=\ %y
+"set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
+"set statusline+=\[%{&fileformat}\]
+"set statusline+=\ %p%%
+"set statusline+=\ %l:%c
 
 
 " }}}
@@ -401,113 +404,6 @@ set tags=tags;/
 
 " }}}
 "}}} end history
-" Remaps {{{1
-" Resource {{{2
-nnoremap <leader>er :vsplit $MYVIMRC<cr>
-"
-" }}}
-" navigation {{{2
-" keep hands on the homerow
-" inoremap jj <Esc>
-
-" Make j and k work well on wrapped lines
-" noremap j gj
-" noremap k gk
-
-" Shift-h/l to the beginning and end of the line
-" nnoremap H ^
-" nnoremap L g_
-
-" Control-h/l To the beginning and end of the line in command mode
-" cnoremap <C-h> <home>
-" cnoremap <C-l> <end>
-
-" Control-j/k jump through the change list, to last inserts point.
-" nnoremap <UP> g;
-" nnoremap <DOWN> g,
-
-" cotrol jkhl to navigate split
-" nnoremap <C-j> <C-w>j
-" nnoremap <C-k> <C-w>k
-" nnoremap <C-h> <C-w>h
-" nnoremap <C-l> <C-w>l
-
-" }}}
-" resize {{{2
-" nnoremap <S-Up> :resize +2<CR>
-" nnoremap <S-Down> :resize -2<CR>
-" nnoremap <S-Left> :vertical resize +2<CR>
-" nnoremap <S-Right> :vertical resize -2<CR>
-
-" }}}
-" search {{{2
-
-" Keep search matches in the middle of the window.
-" nnoremap n nzzzv
-" nnoremap N Nzzzv
-
-" When using star to search for a word. Do not jump on match
-" nnoremap * *<c-o>
-
-" When jumping center the line.
-" nnoremap <c-o> <c-o>zz
-" nnoremap <c-i> <c-i>zz
-
-" Reopen the last search in a QuickFix window
-" nnoremap <silent><leader>/ : execute 'vimgrep / '.@/.'/g %'<CR>:copen<CR>
-
-"nnoremap g; g;zz
-"nnoremap g, g,zz
-
-
-" clear highlights
-" nnoremap <leader><space> :noh<CR>
-
-" }}}
-" copy paste {{{2
-" Copy to system clipboard with ''
-vmap '' :w !pbcopy<CR><CR>
-
-" set paste unsets some of vims indent and format options.
-set pastetoggle=<F1>
-
-" }}}
-" spaces to tabs {{{2
-"nnoremap <leader><TAB> :set et! list!<CR>
-
-" }}}
-" coc {{{2
-" Use `[g` and `]g` to navigate diagnostics
-" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-
-" if has('nvim')
-"
-    " nmap <silent> [g <Plug>(coc-diagnostic-prev)
-    " nmap <silent> ]g <Plug>(coc-diagnostic-next)
-"
-    "  GoTo code navigation.
-    " nmap <silent> gd <Plug>(coc-definition)
-    " nmap <silent> gy <Plug>(coc-type-definition)
-    " nmap <silent> gi <Plug>(coc-implementation)
-    " nmap <silent> gr <Plug>(coc-references)
-    "  navigate diagnostics
-"
-    " nmap <leader>rn <Plug>(coc-rename)
-"
-    "  refactor and rename symbol
-    " nnoremap <silent>r <plug>(coc-refactor)
-"
-    " nnoremap <silent> <leader>a :CocList diagnostics<cr>
-    " nnoremap <silent> <leader>o :CocList outline<cr>
-    " nnoremap <silent> <leader>s :CocList -I symbols<cr>
-"
-" endif
-
-" <leader> rb is a refactor
-
-" }}}
-" }}} end remaps
-" commands and aug commands {{{1
 " commands {{{2
 
 " Fold current file
@@ -536,18 +432,6 @@ let spellable = ['md', 'markdown', 'gitcommit', 'txt', 'text']
 autocmd BufEnter * if index(spellable, &ft) < 0 | set nospell | else | set spell | endif
 
 " }}}
-" equal on resize {{{3
-
-" If the terminal frame is reduce or expanded keep the windows equal.
-au VimResized * :wincmd =
-
-" }}}
-" set paste exit {{{3
-
-" exit paste when past has been set.
-autocmd InsertLeave * set nopaste
-
-" }}}
 " return to line {{{3
 " Make sure Vim returns to the same line when you reopen a file.
 
@@ -560,44 +444,7 @@ augroup line_return
 augroup END
 
 " }}}
-" highlight symbols {{{3
-
-" One way is to do a regex search on runtimepath
-" If you're using vim-plug, here's a general purpose method to check:
-"
-function! PlugLoaded(name)
-    return (
-        \ has_key(g:plugs, a:name) &&
-        \ isdirectory(g:plugs[a:name].dir) &&
-        \ stridx(&rtp, g:plugs[a:name].dir) >= 0)
-endfunction
-
-" highlight all matching words under the cursor
-"
-if PlugLoaded('coc.nvim')
-    autocmd CursorHold * silent call CocActionAsync('highlight')
 endif
-
-" }}}
-" clear white space {{{3
-autocmd BufWritePre * :%s/\s\+$//e
-" }}}
-" highlight yank {{{3
-
-" highlight lines yanked
-augroup highlight_yank
-  autocmd!
-  autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
-augroup END
-
-" }}}
-" set highlight insert line {{{3
-" set color of line
-autocmd InsertEnter * set cul
-" autocmd InsertLeave * set nocul
-endif " has("autocmd")
-" }}}
-" }}}
 " }}}
 " functions {{{1
 " Number Toggle {{{2
@@ -697,31 +544,6 @@ nnoremap <leader>xx :call TagGreper()<cr>
 
 " }}}
 " }}} end functions
-" vender plugins {{{1
-" coc {{{2
-
-" Map for document filetypes so the server could handle current document as
-" another filetype, ex:
-let g:coc_filetype_map = {
-                  \ 'html.erb': 'html',
-                  \ 'erb': 'html',
-                  \ 'eruby': 'html',
-                  \ }
-
-" }}}
-" Custom Highlights {{{2
-
-runtime ./colors/custom-highlight-colors.vim
-
-" }}}
-" raindow parenth {{{2
-
-" let g:ada_rainbow_color = "true"
-let g:rainbow_active = 1
-let g:rainbow_ctermfgs = ['darkblue', 'darkgrey', 'darkmagenta', 'magenta']
-
-" }}}
-" }}}
 " skeleton file {{{1
 
 autocmd BufNewFile  *.markdown 0r $XDG_CONFIG_HOME/nvim/skeleton/skeleton.md
@@ -731,8 +553,19 @@ autocmd BufNewFile  *.rb 0r $XDG_CONFIG_HOME/nvim/skeleton/skeleton.rb
 
 " }}}
 
+" Greps through project for the word under the cursor.
+nnoremap ? :vimgrep /\<<c-r>=expand('<cword>')<cr>\>/ % \| :copen<CR>
+
+" Copy selected to clipboard
+vmap '' :w !pbcopy<CR><CR>
+
+let solirized_italics = 0
+
+" Custom Highlights loaded last to avoid clashes
+runtime ./colors/custom-highlight-colors.vim
+
 " Lua
-" maps {{{!
+" maps {{{1
 
 lua require('keymaps.navigation')
 lua require('keymaps.change_list')
@@ -740,11 +573,14 @@ lua require('keymaps.jump_list')
 lua require('keymaps.search')
 lua require('keymaps.resize')
 lua require('keymaps.telescope')
+lua require('keymaps.coc')
+
+" }}}
+" Aug Commands {{{1
+
+" require commands
+lua require('commands')
 
 " }}}
 
-" Greps through project for the word under the cursor.
-nnoremap ? :vimgrep /\<<c-r>=expand('<cword>')<cr>\>/ % \| :copen<CR>
-
-let solirized_italics = 0
 

@@ -1,23 +1,23 @@
 " Fold {{{1
 "------------------------------------------------------------------------------
-hi Folded cterm=NONE term=NONE ctermfg=12 ctermbg=8 guifg=Cyan guibg=DarkGrey
+" hi Folded cterm=NONE term=NONE ctermfg=12 ctermbg=none guifg=Cyan guibg=DarkGrey
 
 " Set the fold colmn color for unfolds
-hi FoldColumn ctermfg=1 ctermbg=0 gui=bold guifg=Blue guibg=DarkCyan
+" hi FoldColumn ctermfg=1 ctermbg=0 gui=bold guifg=Blue guibg=DarkCyan
 
 " }}}
 " Completion {{{1
 "------------------------------------------------------------------------------
 " Command Completion Colorscheme
-hi Pmenu           term=reverse cterm=reverse ctermfg=8 ctermbg=244 guibg=Magenta
-hi PmenuSel        term=reverse cterm=reverse ctermfg=10 ctermbg=7 guibg=DarkGrey
-hi PmenuSbar       term=reverse cterm=reverse ctermfg=7 ctermbg=12 guibg=Grey
-hi PmenuThumb      term=reverse cterm=reverse ctermfg=10 ctermbg=0 guibg=White
+" hi Pmenu           term=reverse cterm=reverse ctermfg=8 ctermbg=244 guibg=Magenta
+" hi PmenuSel        term=reverse cterm=reverse ctermfg=10 ctermbg=7 guibg=DarkGrey
+" hi PmenuSbar       term=reverse cterm=reverse ctermfg=7 ctermbg=12 guibg=Grey
+" hi PmenuThumb      term=reverse cterm=reverse ctermfg=10 ctermbg=0 guibg=White
 " }}}
 " coc completion {{{1
 
 " pum selection color
-hi CocMenuSel     ctermbg=244 ctermfg=8 guibg=#898989
+" hi CocMenuSel     ctermbg=244 ctermfg=8 guibg=#898989
 
 " }}}
 " coc sign column {{{1
@@ -50,10 +50,10 @@ highlight GitGutterDelete ctermfg=1
 " }}}
 " Telescope color {{{1
 "------------------------------------------------------------------------------
-highlight TelescopeBorder ctermfg=4 ctermbg=8
+" highlight TelescopeBorder ctermfg=4 ctermbg=8
 
 " Highlight characters your input matches
-" highlight TelescopeMatching       guifg=blue
+" highlight TelescopeMatching ctermfg=2 guifg=red
 
 " Color the prompt prefix
 " highlight TelescopePromptPrefix   guifg=red

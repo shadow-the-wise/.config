@@ -27,6 +27,8 @@ if has("nvim")
 
 "   [ColorScheme]
     Plug 'overcache/NeoSolarized'
+    Plug 'arcticicestudio/nord-vim'
+    Plug 'kyazdani42/nvim-web-devicons'
 
 "   [Braces]
     Plug 'frazrepo/vim-rainbow'
@@ -47,6 +49,9 @@ if has("nvim")
 
 "   [Complation]
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+"   [Status Line]
+    Plug 'nvim-lualine/lualine.nvim'
 
 endif
 

@@ -163,14 +163,14 @@ function parse_git_branch() {
     OUTPUT=$(git branch 2> /dev/null)
   if [[ $? -eq 0 ]]; then
     local EXIT_CODE_PROMPT=''
-    EXIT_CODE_PROMPT+="%K{#1F7FCF}%F{#102040}%(5~|%-1~/…/%3~|%4~)%f%k"
-    EXIT_CODE_PROMPT+="%K{#5A5C5C}%F{#1F7FCF}${div}%f%k"
-    EXIT_CODE_PROMPT+="%K{#5A5C5C} git:(%F{green}$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')%f)%k"
-    EXIT_CODE_PROMPT+="%K{#002B36}%F{#5A5C5C}${div}%f%k"
+    EXIT_CODE_PROMPT+="%K{white}%F{#102040}%(5~|%-1~/…/%3~|%4~)%f%k"
+    EXIT_CODE_PROMPT+="%K{blue}%F{white}${div}%f%k"
+    EXIT_CODE_PROMPT+="%K{blue} %F{black}git:(%f%F{red}$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')%f%F{black})%f%k"
+    EXIT_CODE_PROMPT+="%K{#2E3440}%F{blue}${div}%f%k"
     echo "$EXIT_CODE_PROMPT"
   else
     local NO_GIT=''
-    NO_GIT+="%K{#1F7FCF}%F{#102040}%(5~|%-1~/…/%3~|%4~)%f%k%K{#002B36}%F{#1F7FCF}${div}%f%k"
+    NO_GIT+="%K{white}%F{#102040}%(5~|%-1~/…/%3~|%4~)%f%k%K{#2E3440}%F{white}${div}%f%k"
     echo "$NO_GIT"
   fi
 }
@@ -213,13 +213,13 @@ function ahead_behind {
 # 11408D
 
 # Date and Time
-local basic="%K{#11408D}%F{white} ${date} ${prompt_time}%f%k"
-basic+="%K{#10509F}%F{#11408D}${div}%f%k"
+local basic="%K{black}%F{white} ${date} ${prompt_time}%f%k"
+basic+="%K{#5A5C5C}%F{black}${div}%f%k"
 # Jobs
-basic+="%K{#10509F}[%F{green}${prompt_jobs}%f]%k"
+basic+="%K{#5A5C5C}[%F{green}${prompt_jobs}%f]%k"
 # User @ Machine
-basic+="%K{#10509F} ${prompt_user}%F{blue}@${machine}%f%k"
-basic+="%F{#10509F}%K{#1F7FCF}$div%k%f"
+basic+="%K{#5A5C5C} ${prompt_user}%F{white}@${machine}%f%k"
+basic+="%F{#5A5C5C}%K{white}$div%k%f"
 
 # define a function that sets PS1, then add that function to the
 # precmd_functions array so that it is executed prior to displaying each

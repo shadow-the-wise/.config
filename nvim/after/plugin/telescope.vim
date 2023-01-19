@@ -59,7 +59,7 @@ require('telescope').setup{
     winblend = 0,
     border = {},
     borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' },
-    color_devicons = false,
+    color_devicons = true,
     use_less = true,
     path_display = {},
     set_env = { ['COLORTERM'] = 'truecolor' }, -- default = nil,
