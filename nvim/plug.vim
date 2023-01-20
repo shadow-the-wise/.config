@@ -28,7 +28,6 @@ if has("nvim")
 "   [ColorScheme]
     Plug 'overcache/NeoSolarized'
     Plug 'arcticicestudio/nord-vim'
-    Plug 'kyazdani42/nvim-web-devicons'
 
 "   [Braces]
     Plug 'frazrepo/vim-rainbow'

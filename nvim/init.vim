@@ -561,9 +561,6 @@ vmap '' :w !pbcopy<CR><CR>
 
 let solirized_italics = 0
 
-" Custom Highlights loaded last to avoid clashes
-runtime ./colors/custom-highlight-colors.vim
-
 " Lua
 " maps {{{1
 
@@ -583,4 +580,6 @@ lua require('commands')
 
 " }}}
 
+" Custom Highlights loaded last to avoid clashes
+runtime ./colors/custom-highlight-colors.vim
 

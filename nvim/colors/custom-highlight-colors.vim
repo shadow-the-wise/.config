@@ -1,6 +1,6 @@
 " Fold {{{1
 "------------------------------------------------------------------------------
-" hi Folded cterm=NONE term=NONE ctermfg=12 ctermbg=none guifg=Cyan guibg=DarkGrey
+hi Folded cterm=NONE term=NONE guibg=NONE ctermbg=NONE ctermfg=8 guifg=#434c5e
 
 " Set the fold colmn color for unfolds
 " hi FoldColumn ctermfg=1 ctermbg=0 gui=bold guifg=Blue guibg=DarkCyan
@@ -43,26 +43,33 @@ hi CocFloating ctermbg=8 ctermfg=11
 " }}}
 " Git Gutter {{{1
 "------------------------------------------------------------------------------
-highlight GitGutterAdd    ctermfg=28
+highlight GitGutterAdd    ctermfg=2
 highlight GitGutterChange ctermfg=3
 highlight GitGutterDelete ctermfg=1
 
 " }}}
 " Telescope color {{{1
 "------------------------------------------------------------------------------
-" highlight TelescopeBorder ctermfg=4 ctermbg=8
+" Border color
+highlight TelescopeBorder ctermfg=8
+
+" Telescope Titles
+" highlight TelescopeResultsTitle ctermfg=4
+" highlight TelescopePreviewTitle ctermfg=4
+" Highlight TelescopePromptTitle ctermfg=4
 
 " Highlight characters your input matches
-" highlight TelescopeMatching ctermfg=2 guifg=red
+highlight TelescopeMatching ctermfg=3 guifg=yellow
 
 " Color the prompt prefix
-" highlight TelescopePromptPrefix   guifg=red
+highlight TelescopePromptPrefix ctermfg=4  guifg=blue
 
 " }}}
 " Hop {{{1
 "------------------------------------------------------------------------------
-hi HopNextKey1  ctermfg=196
-hi HopNextKey2  ctermfg=196
-hi HopNextKey   ctermfg=196
+hi HopNextKey1  ctermfg=202 ctermbg=8
+hi HopNextKey2  ctermfg=196 ctermbg=8
+hi HopNextKey   ctermfg=202 ctermbg=8
 
 " }}}
+" this is a thing with the letter t in it

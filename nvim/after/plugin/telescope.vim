@@ -1,18 +1,3 @@
-" mru
-" nnoremap <leader>m <cmd>Telescope oldfiles<cr>
-
-" file browser
-" nnoremap <leader>fb <cmd>Telescope file_browser<cr>
-
-" buffers
-" nnoremap <leader>b <cmd>Telescope buffers<cr>
-
-" find files
-" nnoremap <leader>ff <cmd>Telescope find_files<cr>
-
-" help tags
-" nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-
 lua << EOF
 
 local actions = require "telescope.actions"
@@ -59,7 +44,7 @@ require('telescope').setup{
     winblend = 0,
     border = {},
     borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' },
-    color_devicons = true,
+    color_devicons = false,
     use_less = true,
     path_display = {},
     set_env = { ['COLORTERM'] = 'truecolor' }, -- default = nil,
