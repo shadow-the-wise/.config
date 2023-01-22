@@ -1,6 +1,4 @@
-let g:indent_blankline_filetype_exclude = ['help', "checkhealth", "man", "md", "markdown", "txt", "vim"]
-
-lua << EOF
+-- let g:indent_blankline_filetype_exclude = ['help', "checkhealth", "man", "md", "markdown", "txt", "vim"]
 
 require('indent_blankline').setup({
   char = '▏',
@@ -9,5 +7,3 @@ require('indent_blankline').setup({
   use_treesitter = false,
   show_current_context = false
 })
-
-EOF

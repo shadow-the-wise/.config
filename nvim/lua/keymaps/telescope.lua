@@ -16,4 +16,6 @@ key_map("n", "<leader>ff", "<CMD>Telescope find_files<CR>", {noremap = true, des
 
 key_map("n", "<leader>fh", "<CMD>Telescope help_tags<CR>", {noremap = true, desc = "Help tags"})
 
+-- Command Pallette
 
+key_map("n", "<leader>b", "<CMD>Telescope command_palette<CR>", {noremap = true, desc = "Command pallette"})
