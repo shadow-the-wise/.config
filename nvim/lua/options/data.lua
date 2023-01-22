@@ -23,7 +23,7 @@ set.backupdir = data_dir .. '/nvim/backup/'
 
 -- set spell file location
 
-set.spellfile = data_dir .. '/nvim/spell/en.uft-8.add'
+set.spellfile = data_dir .. '/nvim/spell/custom-dictionary.utf-8.add'
 
 -- do not create a swapfile
 

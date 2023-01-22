@@ -4,8 +4,6 @@
 -- Language: Lua
 -------------------------------------------------------------------------------
 
--- LUA
-
 -- load the plugin manager and plugins
 
 require('load_plugins')

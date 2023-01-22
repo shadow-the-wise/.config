@@ -64,6 +64,25 @@ function M.browse_config()
   }
 end
 
+-- Cache
+
+function M.browse_cache()
+  require("telescope").extensions.file_browser.file_browser {
+    prompt_title = "Browse Cache",
+    prompt_prefix = "❯",
+    cwd = "$HOME/.cache",
+  }
+end
+-- Data
+
+function M.browse_data()
+  require("telescope").extensions.file_browser.file_browser {
+    prompt_title = "Browse Data",
+    prompt_prefix = "❯",
+    cwd = "$HOME/.local/share/nvim",
+  }
+end
+
 -- Sites
 
 function M.browse_sites()
