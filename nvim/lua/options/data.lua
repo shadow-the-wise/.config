@@ -1,18 +1,23 @@
 local set = vim.opt
 local data_dir = vim.env.XDG_DATA_HOME
 
--- command line history file size
+-- History files (undo, swap and backup)
+
+-- There is a specific reason these files are stored in the XDG_DATA_HOME
+-- and not the XDG_CACHE_HOME. The cache should only contain data that is
+-- non-essential. Clearing the cache should not have an impact on Nvims
+-- functionality. Hence, the Cache is for reproducible data only.
+
+-- Command line history file size
 
 set.history = 1000
 
--- set undo
+-- Save the whole buffer for undo when reloading it
 
+set.undoreload = 10000
 set.undofile = true
 set.undodir = data_dir .. '/nvim/undo/'
 
--- save the whole buffer for undo when reloading it
-
-set.undoreload = 10000
 
 -- If you write to an existing file (but do not append) while the 'backup',
 -- 'writebackup' or 'patchmode' option is on, a backup of the original file is
@@ -21,11 +26,13 @@ set.undoreload = 10000
 set.backup = true
 set.backupdir = data_dir .. '/nvim/backup/'
 
--- set spell file location
+-- Set spell file location
 
+set.spelllang = "en_gb"
+set.spelloptions = "camel,noplainbuffer"
 set.spellfile = data_dir .. '/nvim/spell/custom-dictionary.utf-8.add'
 
--- do not create a swapfile
+-- Do not create a swapfile
 
 set.swapfile = false
 set.directory = data_dir .. '/nvim/swap/'

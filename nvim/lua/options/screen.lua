@@ -14,6 +14,10 @@ set.relativenumber = true
 
 set.cursorline = true
 
+-- keep cursor at the first char through jumps
+
+set.startofline = false
+
 -- textwidth
 
 set.textwidth = 79
