@@ -116,7 +116,7 @@ require('telescope').setup{
 
 -- File Browser Extension
 
-require("telescope").load_extension "file_browser"
+require("telescope").load_extension("file_browser")
 
 require('telescope').load_extension('command_palette')
 
