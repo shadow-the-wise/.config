@@ -4,25 +4,46 @@
 -- Language: Lua
 -------------------------------------------------------------------------------
 
--- load the plugin manager and plugins
+-- [Plugin Manager]
+
+-- Plugin manager for Neovim. That uses native packages, supports Luarocks
+-- dependencies and is written in Lua.
 
 require('load_plugins')
 
--- aug Commands
+-- [Plugins] Configuration files for individual plugins.
+
+require('plugins.hop')
+require('plugins.telescope')
+require('plugins.rainbow')
+require('plugins.indent')
+require('plugins.lua_line')
+
+-- [Aug Commands]
+
+-- You can specify commands to be executed automatically when reading or
+-- writing a file, when entering or leaving a buffer or window, and when
+-- exiting Vim.
 
 require('commands')
 
--- options
+-- [Options] Internal variables and switches which can be set by the user.
 
-require('options.speacial_keys')
-require('options.screen')
 require('options.command_window')
-require('options.navigation')
-require('options.ignore')
+require('options.completion')
 require('options.data')
 require('options.formatting')
+require('options.ignore')
+require('options.indent')
+require('options.list_chars')
+require('options.navigation')
+require('options.screen')
+require('options.search')
+require('options.speacial_keys')
+require('options.tab')
+require('options.spell')
 
--- maps
+-- [Maps] Keymappings used to invoke shortcuts.
 
 require('keymaps.navigation')
 require('keymaps.change_list')
@@ -30,12 +51,10 @@ require('keymaps.jump_list')
 require('keymaps.search')
 require('keymaps.resize')
 require('keymaps.telescope')
+require('keymaps.hop')
 
--- plugins
+-- [LSP] Language server configuration.
 
-require('plugins.hop')
-require('plugins.telescope')
-require('plugins.rainbow')
-require('plugins.indent')
-require('plugins.lua_line')
+require('plugins.mason')
+require('lsp_config')
 
