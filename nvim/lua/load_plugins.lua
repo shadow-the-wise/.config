@@ -18,12 +18,14 @@ return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
 
     -- [StatusLine]
+
     use {
         'nvim-lualine/lualine.nvim',
         requires = { 'kyazdani42/nvim-web-devicons', opt = true }
     }
 
     -- [Navigation]
+
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.1',
         -- or                            , branch = '0.1.x',
@@ -38,18 +40,22 @@ return require('packer').startup(function(use)
         branch = 'v2', -- optional but strongly recommended
     }
 
-    use { 'rhysd/clever-f.vim' }
+    --use { 'rhysd/clever-f.vim' }
 
     -- [Indentation]
+
     use { "lukas-reineke/indent-blankline.nvim" }
 
     -- [Braces]
+
     use { 'frazrepo/vim-rainbow' }
 
     -- [ColorScheme]
+
     use { 'arcticicestudio/nord-vim' }
 
     -- [Git]
+
     use  {'airblade/vim-gitgutter'}
 
     use { 'tpope/vim-fugitive' }
@@ -58,6 +64,14 @@ return require('packer').startup(function(use)
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
+
+    -- [LSP]
+
+    use {
+        "williamboman/mason.nvim",
+        "williamboman/mason-lspconfig.nvim",
+        'neovim/nvim-lspconfig'
+    }
 
     if packer_bootstrap then
         require('packer').sync()
