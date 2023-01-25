@@ -1,5 +1,8 @@
 local key_map = vim.api.nvim_set_keymap
 
+-- TODO the two plugins filebrowser and command palette donot work when plugins
+-- not explicitly required.
+
 -- File Browser
 
 key_map("n", "<leader>fb", "<CMD>Telescope file_browser<CR>", {noremap = true, desc = "File browser"})

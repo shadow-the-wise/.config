@@ -8,16 +8,12 @@
 
 -- Plugin manager for Neovim. That uses native packages, supports Luarocks
 -- dependencies and is written in Lua.
+--
+-- All plugin configuration files are located at ~/.config/nvim/plugin
+-- This dir is on the runtime path and does not need a require in init.lua
 
 require('load_plugins')
 
--- [Plugins] Configuration files for individual plugins.
-
-require('plugins.hop')
-require('plugins.telescope')
-require('plugins.rainbow')
-require('plugins.indent')
-require('plugins.lua_line')
 
 -- [Aug Commands]
 
@@ -55,6 +51,7 @@ require('keymaps.hop')
 
 -- [LSP] Language server configuration.
 
-require('plugins.mason')
-require('lsp_config')
+require('lsp.lsp_config')
+require('lsp.diagnostic')
+-- require('lsp.highlighting')
 

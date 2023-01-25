@@ -40,11 +40,13 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- TODO: buffer is not being re-evaluated and persisting spell when set
 -- Enable spell checking for certain file types
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-    pattern = { "*.txt", "*.md", "*.tex" },
+    pattern = { "*.txt", "*.md", "*.tex", "*.text" },
     callback = function()
       vim.opt.spell = true
       vim.opt.spelllang = "en"
     end,
 })
+

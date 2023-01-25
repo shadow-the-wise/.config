@@ -26,12 +26,6 @@ set.undodir = data_dir .. '/nvim/undo/'
 set.backup = true
 set.backupdir = data_dir .. '/nvim/backup/'
 
--- Set spell file location
-
-set.spelllang = "en_gb"
-set.spelloptions = "camel,noplainbuffer"
-set.spellfile = data_dir .. '/nvim/spell/custom-dictionary.utf-8.add'
-
 -- Do not create a swapfile
 
 set.swapfile = false

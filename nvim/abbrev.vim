@@ -219,7 +219,7 @@ iabbrev rime rhyme
 "-----------------------------------------------------------------------------
 " S
 "-----------------------------------------------------------------------------
-iabbrev  secretery secretary
+iabbrev secretery secretary
 iabbrev sieze seize
 iabbrev seperate separate
 iabbrev sargent sergeant

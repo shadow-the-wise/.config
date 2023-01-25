@@ -21,7 +21,7 @@ return require('packer').startup(function(use)
 
     use {
         'nvim-lualine/lualine.nvim',
-        requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+        -- requires = { 'kyazdani42/nvim-web-devicons', opt = true }
     }
 
     -- [Navigation]
@@ -70,7 +70,9 @@ return require('packer').startup(function(use)
     use {
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
-        'neovim/nvim-lspconfig'
+        'neovim/nvim-lspconfig',
+        'jose-elias-alvarez/null-ls.nvim'
+
     }
 
     if packer_bootstrap then

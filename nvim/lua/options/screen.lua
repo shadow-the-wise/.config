@@ -30,3 +30,7 @@ set.colorcolumn = [[80]]
 -- character defined
 
 set.conceallevel = 2
+
+-- always display the sign column
+
+set.signcolumn = "yes:2"
