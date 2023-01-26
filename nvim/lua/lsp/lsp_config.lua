@@ -1,3 +1,18 @@
+local null_ls = require("null-ls")
+
+-- Create a variable for the null_ls.builtins
+
+local b = null_ls.builtins
+
+-- Create a sources list for chosen formatters and filetypes
+
+local sources = {
+    -- format html and markdown
+    b.formatting.prettier.with { filetypes = { "json", "html", "yaml", "css", "scss" } },
+    b.formatting.rubocop.with { filetypes = { "ruby", "eruby" } },
+
+}
+
 -- [Mappings]
 
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -9,10 +24,32 @@ vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 
+-- Create a group for our formatting
+
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+
 -- Use an on_attach function to only map the following keys after the language
 -- server attaches to the current buffer
 
 local on_attach = function(client, bufnr)
+
+    -- formatting on save
+
+    if client.supports_method "textDocument/formatting" then
+        vim.api.nvim_clear_autocmds { group = augroup, buffer = bufnr }
+        vim.api.nvim_create_autocmd("BufWritePre", {
+            group = augroup,
+            buffer = bufnr,
+            callback = function()
+                -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
+                vim.lsp.buf.format({ bufnr = bufnr })
+            end,
+        })
+    end
+
+    if client.server_capabilities.document_formatting then
+        vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.format() ")
+    end
 
     -- Enable completion triggered by <c-x><c-o>
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
@@ -51,12 +88,14 @@ local lsp_flags = {
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
+
 -- [JSON]
 
 require('lspconfig').jsonls.setup {
     on_attach = on_attach,
     flags = lsp_flags,
     capabilities = capabilities,
+    sources = sources
 }
 
 -- [RUBY]
@@ -72,7 +111,8 @@ require('lspconfig')["solargraph"].setup {
         solargraph = {
             diagnostics = true
         }
-    }
+    },
+    sources = sources,
 }
 
 -- [YAML]
@@ -81,6 +121,7 @@ require('lspconfig')["yamlls"].setup {
     on_attach = on_attach,
     flags = lsp_flags,
     capabilities = capabilities,
+    sources = sources,
 }
 
 -- [LUA]
@@ -104,7 +145,8 @@ require('lspconfig')["html"].setup {
     on_attach = on_attach,
     flags = lsp_flags,
     capabilities = capabilities,
-    filetypes = { "html", "eruby" }
+    filetypes = { "html", "eruby" },
+    sources = sources,
 }
 
 -- [CSS]
@@ -113,6 +155,7 @@ require('lspconfig')["cssls"].setup {
     on_attach = on_attach,
     flags = lsp_flags,
     capabilities = capabilities,
+    cmd = { "vscode-css-language-server", "--stdio" },
     filetypes = { "css", "scss", "less" },
     settings = {
         css = {
@@ -124,5 +167,6 @@ require('lspconfig')["cssls"].setup {
         scss = {
             validate = true
         }
-    }
+    },
+    sources = sources
 }

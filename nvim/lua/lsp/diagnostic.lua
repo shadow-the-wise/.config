@@ -30,6 +30,9 @@ end
 vim.diagnostic.config({
     virtual_text = {
         prefix = '■', -- Could be '●', '▎', 'x'
-    }
+    },
+    float = {
+        border = 'single',
+        width = 60
+    },
 })
-
