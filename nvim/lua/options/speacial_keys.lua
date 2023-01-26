@@ -12,3 +12,6 @@ vim.g.mapleader = " "
 
 set.updatetime = 100
 
+-- Copy text from external source using C-c and paste with p
+
+set.clipboard:append { 'unnamed', 'unnamedplus' }
