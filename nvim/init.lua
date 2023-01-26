@@ -53,5 +53,7 @@ require('keymaps.hop')
 
 require('lsp.lsp_config')
 require('lsp.diagnostic')
+require('lsp.handlers')
+-- require('lsp.null_ls')
 -- require('lsp.highlighting')
 
