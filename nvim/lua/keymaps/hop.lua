@@ -1,46 +1,9 @@
 local key_map = vim.api.nvim_set_keymap
-local hop = require("hop")
-local directions = require('hop.hint').HintDirection
 
--- Search after the cursor
+-- Search for letter in current buffer
 
-vim.keymap.set('n', 'F',
-    function()
-        hop.hint_char1({
-            direction = directions.AFTER_CURSOR,
-            current_line_only = false
-        })
-    end,
-    {
-        remap = true,
-        desc = "Hop after the cursor"
-    }
-)
+key_map('n', 'f', "<CMD>HopChar1<CR>", { desc = "Hop letter in current buffer" })
 
--- Search before the cursor
+-- Search fot pattern in buffer
 
-vim.keymap.set('n', 'f',
-    function() hop.hint_char1({
-        direction = directions.BEFORE_CURSOR,
-        current_line_only = false
-    })
-    end,
-    {
-        remap = true,
-        desc = "Hop before the cursor"
-    }
-)
-
--- Search for pattern
-
-vim.keymap.set('n', '<leader>f',
-    function() hop.hint_patterns({
-        current_line_only = false
-    })
-    end,
-    {
-        remap = true,
-        desc = "Hop pattern"
-    }
-)
-
+key_map('n', 'F', "<CMD>HopPattern<CR>", { desc = "Hop pattern in current buffer" })
