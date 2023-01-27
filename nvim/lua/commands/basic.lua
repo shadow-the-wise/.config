@@ -21,13 +21,6 @@ vim.cmd [[command! -bang W w<bang>]]
 vim.cmd [[command! -bang Wq wq<bang>]]
 vim.cmd [[command! -bang Q q<bang>]]
 
--- Source abbreviations
-
-vim.api.nvim_create_autocmd({ "VimEnter" }, {
-    desc = "Source abbreviation file",
-    command = [[source ~/.config/nvim/abbrev.vim]]
-})
-
 -- Remove white space
 
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
