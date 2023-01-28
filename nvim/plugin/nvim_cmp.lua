@@ -13,6 +13,12 @@ local has_words_before = function()
 end
 
 cmp.setup({
+    --  Nvim-cmp respects the LSP (Language Server Protocol) specification.
+    --  The LSP spec defines the `preselect` feature for completion.
+    --  You can disable the `preselect` feature like this:
+
+    -- preselect = cmp.PreselectMode.None
+
     snippet = {
         -- REQUIRED - you must specify a snippet engine
         expand = function(args)
@@ -54,17 +60,41 @@ cmp.setup({
     mapping = cmp.mapping.preset.insert({
         ['<C-b>'] = cmp.mapping.scroll_docs(-4),
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
-        ['<C-Space>'] = cmp.mapping.complete(),
-        ['<C-e>'] = cmp.mapping.abort(),
-        ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+        ['<ESC'] = cmp.mapping.abort(),
+
+        -- Accept currently selected item. Set `select` to `false` to only
+        -- confirm explicitly selected items.
+
+        ['<CR>'] = cmp.mapping.confirm({ select = true }),
     }),
+
     sources = cmp.config.sources({
-        { name = 'nvim_lsp' },
-        -- { name = 'vsnip' }, -- For vsnip users.
-        { name = 'luasnip' }, -- For luasnip users.
-        -- { name = 'ultisnips' }, -- For ultisnips users.
-        -- { name = 'snippy' }, -- For snippy users.
-    }, {
-        { name = 'buffer' },
-    })
+        { name = 'nvim_lsp', priority = 5 },
+        { name = 'buffer', priority = 4 },
+        { name = 'luasnip', priority = 3 },
+        { name = 'path', priority = 2 },
+        { name = 'nvim_lsp_signature_help' },
+        { name = 'nvim-lsp-document-symbol' },
+        { name = 'nvim_lua' },
+    }),
 })
+
+-- How to setup nvim-cmp for a specific buffer?
+
+cmp.setup.filetype({ 'markdown', 'help' }, {
+    sources = {
+        { name = 'path' },
+        { name = 'buffer' },
+    },
+    window = {
+        documentation = cmp.config.disable
+    }
+})
+
+-- Require the snippets of choice
+
+require("luasnip.loaders.from_vscode").lazy_load()
+
+-- if you want to add rails snippets to ruby
+
+require 'luasnip'.filetype_extend("ruby", { "rails" })

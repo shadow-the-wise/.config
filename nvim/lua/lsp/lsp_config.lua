@@ -33,6 +33,25 @@ local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 local on_attach = function(client, bufnr)
 
+    -- Server capabilities spec:
+    -- https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#serverCapabilities
+    if client.server_capabilities.documentHighlightProvider then
+        vim.api.nvim_create_augroup("lsp_document_highlight", { clear = true })
+        vim.api.nvim_clear_autocmds { buffer = bufnr, group = "lsp_document_highlight" }
+        vim.api.nvim_create_autocmd("CursorHold", {
+            callback = vim.lsp.buf.document_highlight,
+            buffer = bufnr,
+            group = "lsp_document_highlight",
+            desc = "Document Highlight",
+        })
+        vim.api.nvim_create_autocmd("CursorMoved", {
+            callback = vim.lsp.buf.clear_references,
+            buffer = bufnr,
+            group = "lsp_document_highlight",
+            desc = "Clear All the References",
+        })
+    end
+
     -- formatting on save
 
     if client.supports_method "textDocument/formatting" then
@@ -85,9 +104,9 @@ local lsp_flags = {
 
 --Enable (broadcasting) snippet capability for completion
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
+-- local capabilities = vim.lsp.protocol.make_client_capabilities()
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
-
 
 -- [JSON]
 
@@ -95,7 +114,7 @@ require('lspconfig').jsonls.setup {
     on_attach = on_attach,
     flags = lsp_flags,
     capabilities = capabilities,
-    sources = sources
+    -- sources = sources
 }
 
 -- [RUBY]
@@ -112,7 +131,7 @@ require('lspconfig')["solargraph"].setup {
             diagnostics = true
         }
     },
-    sources = sources,
+    -- sources = sources,
 }
 
 -- [YAML]
@@ -121,7 +140,7 @@ require('lspconfig')["yamlls"].setup {
     on_attach = on_attach,
     flags = lsp_flags,
     capabilities = capabilities,
-    sources = sources,
+    -- sources = sources,
 }
 
 -- [LUA]
@@ -146,7 +165,7 @@ require('lspconfig')["html"].setup {
     flags = lsp_flags,
     capabilities = capabilities,
     filetypes = { "html", "eruby" },
-    sources = sources,
+    -- sources = sources,
 }
 
 -- [CSS]
@@ -155,18 +174,5 @@ require('lspconfig')["cssls"].setup {
     on_attach = on_attach,
     flags = lsp_flags,
     capabilities = capabilities,
-    cmd = { "vscode-css-language-server", "--stdio" },
-    filetypes = { "css", "scss", "less" },
-    settings = {
-        css = {
-            validate = true
-        },
-        less = {
-            validate = true
-        },
-        scss = {
-            validate = true
-        }
-    },
-    sources = sources
+    -- sources = sources
 }

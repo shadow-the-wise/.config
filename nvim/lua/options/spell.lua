@@ -20,4 +20,3 @@ set.spelloptions = "camel,noplainbuffer"
 -- Set spell file location
 
 set.spellfile = config_dir .. '/nvim/spell/custom-dictionary.utf-8.add'
-

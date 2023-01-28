@@ -2,13 +2,14 @@ local set = vim.opt
 
 -- LIST CHARS
 
--- chars to show eol, trailing the carat and as space when tabing
+-- List mode: By default, show tabs as ">", trailing spaces as "-", and non-breakable space characters as "+".
 
 set.list = true
 
--- set.listchars = { tab = '│', trail = '•', extends = '❯', precedes = '❮' }
+-- chars to show eol, trailing the carat and as space when tabing
 
--- When the terminal is more compact this indicates breaks
+set.listchars = { tab = '--', trail = '-', extends = '❯', precedes = '❮' }
+
 
 set.showbreak = '↪'
 
@@ -17,4 +18,3 @@ set.showbreak = '↪'
 set.fillchars = { diff = '⣿' }
 
 set.fillchars = { vert = '▏' }
-

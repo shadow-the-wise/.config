@@ -21,7 +21,11 @@ require('load_plugins')
 -- writing a file, when entering or leaving a buffer or window, and when
 -- exiting Vim.
 
-require('commands')
+require('commands.basic')
+require('commands.skeletons')
+require('commands.spell')
+require('commands.quits')
+require('commands.autocorrect')
 
 -- [Options] Internal variables and switches which can be set by the user.
 
@@ -56,4 +60,3 @@ require('lsp.diagnostic')
 require('lsp.handlers')
 -- require('lsp.null_ls')
 -- require('lsp.highlighting')
-
