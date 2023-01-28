@@ -1,92 +1,70 @@
 require('lualine').setup {
-  options = {
-    icons_enabled = true,
-    theme = 'nord',
-    component_separators = { left = '', right = ''},
-    section_separators = { left = '', right = ''},
-    disabled_filetypes = {
-      statusline = {},
-      winbar = {},
-    },
-    ignore_focus = {},
-    always_divide_middle = true,
-    globalstatus = false,
-    refresh = {
-      statusline = 1000,
-      tabline = 1000,
-      winbar = 1000,
-    }
-  },
-  sections = {
-        lualine_a = {'mode'},
-        lualine_b = {'branch', 'diff', 'diagnostics'},
-        lualine_c = { { 'filename',
-            file_status = true,      -- Displays file status (readonly status, modified status)
-            newfile_status = false,  -- Display new file status (new file means no write after created)
-            path = 0,                -- 0: Just the filename
-                                    -- 1: Relative path
-                                    -- 2: Absolute path
-                                    -- 3: Absolute path, with tilde as the home directory
-
-            shorting_target = 40,    -- Shortens path to leave 40 spaces in the window
-                                -- for other components. (terrible name, any suggestions?)
-            symbols = {
-                modified = '[+]',      -- Text to show when the file is modified.
-                readonly = '[-]',      -- Text to show when the file is non-modifiable or readonly.
-                unnamed = '[No Name]', -- Text to show for unnamed buffers.
-                newfile = '[New]',     -- Text to show for newly created file before first write
-            }
+    options = {
+        icons_enabled = false,
+        theme = 'nord',
+        component_separators = { left = '', right = '' },
+        section_separators = { left = '', right = '' },
+        disabled_filetypes = {
+            statusline = {},
+            winbar = {},
+        },
+        ignore_focus = {},
+        always_divide_middle = true,
+        globalstatus = false,
+        refresh = {
+            statusline = 1000,
+            tabline = 1000,
+            winbar = 1000,
         }
     },
-    lualine_d = {
-    {
-        'diagnostics',
-            -- Table of diagnostic sources, available sources are:
-            -- 'nvim_lsp', 'nvim_diagnostic', 'nvim_workspace_diagnostic',
-            -- 'coc', 'ale', 'vim_lsp'. -- or a function that returns a
-            -- table as such: --   { error=error_cnt, warn=warn_cnt,
-            -- info=info_cnt, hint=hint_cnt }
-        sources = { 'nvim_diagnostic', 'coc' },
+    sections = {
+        lualine_a = { 'mode' },
+        lualine_b = { 'branch', 'diagnostics' },
+        lualine_c = { { 'diff',
 
-        -- Displays diagnostics for the defined severity types
-        sections = { 'error', 'warn', 'info', 'hint' },
+            -- Displays a colored diff status if set to true
+            colored = true,
 
-        diagnostics_color = {
+            -- Changes the symbols used by the diff.
+            symbols = { added = '+', modified = '~', removed = '-' },
 
-            -- Same values as the general color option can be used here.
-            error = 'DiagnosticError', -- Changes diagnostics' error color.
-            warn  = 'DiagnosticWarn',  -- Changes diagnostics' warn color.
-            info  = 'DiagnosticInfo',  -- Changes diagnostics' info color.
-            hint  = 'DiagnosticHint',  -- Changes diagnostics' hint color.
-        },
-        symbols = {
-            error = 'E', warn = 'W', info = 'I', hint = 'H'
-        },
-        -- Displays diagnostics status in color if set to true.
-        colored = true,
-
-        -- Update diagnostics in insert mode.
-        update_in_insert = false,
-
-        -- Show diagnostics even if there are none.
-        always_visible = false,
-        }
-    },
-    lualine_x = {'encoding', 'fileformat', 'filetype'},
-    lualine_y = {'progress'},
-    lualine_z = {'location'}
+            -- A function that works as a data source for diff.
+            -- It must return a table as such:
+            --   { added = add_count, modified = modified_count, removed = removed_count }
+            -- or nil on failure. count <= 0 won't be displayed.
+            source = nil,
+        } },
+        lualine_x = { 'encoding' },
+        lualine_y = { 'fileformat' },
+        lualine_z = { 'filetype' }
+        --lualine_y = { 'progress' },
+        --lualine_z = { 'location' }
     },
     inactive_sections = {
         lualine_a = {},
         lualine_b = {},
-        lualine_c = {'filename'},
-        lualine_x = {'location'},
+        lualine_c = { 'filename' },
+        lualine_x = { 'location' },
         lualine_y = {},
         lualine_z = {}
     },
-    tabline = {},
+    tabline = {
+        lualine_a = { { 'buffers',
+            show_filename_only = true,
+            hide_filename_extension = false,
+            show_modified_status = true,
+            mode = 4,
+            symbols = {
+                -- symbols dor mod, alt file and directory
+                modified = ' ●',
+                alternate_file = '#',
+                directory = '',
+            },
+        } },
+        lualine_y = { 'progress' },
+        lualine_z = { 'location' }
+    },
     winbar = {},
     inactive_winbar = {},
     extensions = {}
 }
-
