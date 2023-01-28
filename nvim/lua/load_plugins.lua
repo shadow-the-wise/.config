@@ -58,7 +58,9 @@ return require('packer').startup(function(use)
 
     -- [ColorScheme]
 
-    use { 'arcticicestudio/nord-vim' }
+    use {
+        'arcticicestudio/nord-vim',
+    }
 
     -- [Git]
 
@@ -103,6 +105,10 @@ return require('packer').startup(function(use)
 
         'hrsh7th/nvim-cmp',
 
+        -- luasnip completion source for nvim-cmp
+
+        'saadparwaiz1/cmp_luasnip',
+
         -- source for neovims builtin lsp client
 
         'hrsh7th/cmp-nvim-lsp',
@@ -121,7 +127,7 @@ return require('packer').startup(function(use)
 
         -- Snippets
 
-        'rafamadriz/friendly-snippets'
+        'rafamadriz/friendly-snippets',
     }
 
 

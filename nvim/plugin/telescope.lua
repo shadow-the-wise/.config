@@ -95,6 +95,7 @@ require('telescope').setup {
                 { "File Browser", ":lua require('telescope').extensions.file_browser.file_browser()" },
                 { "Find Files", ":lua require('telescope.builtin').find_files()" },
                 { "Fuzzy Find Infile", ":lua require('telescope.builtin').current_buffer_fuzzy_find()" },
+                { "Buffers", ":lua require('telescope.builtin').buffers()" },
                 { "Jump List", ":lua require('utils').search_jumps()" },
                 { "Marks List", ":lua require('telescope.builtin').marks()" },
                 { "Tags - Current Directory", ":lua require('utils').search_tags()" },

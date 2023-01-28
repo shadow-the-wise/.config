@@ -9,7 +9,6 @@ local luasnip = require("luasnip")
 
 vim.opt.completeopt = { "menuone", "noinsert", "noselect" }
 
-
 local icons = {
     Array = ' ',
     Boolean = ' ',

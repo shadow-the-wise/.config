@@ -1,17 +1,16 @@
-local null_ls = require("null-ls")
+-- local null_ls = require("null-ls")
 
 -- Create a variable for the null_ls.builtins
 
-local b = null_ls.builtins
+-- local b = null_ls.builtins
 
 -- Create a sources list for chosen formatters and filetypes
 
-local sources = {
-    -- format html and markdown
-    b.formatting.prettier.with { filetypes = { "json", "html", "yaml", "css", "scss" } },
-    b.formatting.rubocop.with { filetypes = { "ruby", "eruby" } },
-
-}
+-- local sources = {
+-- format html and markdown
+-- b.formatting.prettier.with { filetypes = { "json", "html", "yaml", "css", "scss", "less" } },
+-- b.diagnostics.rubocop.with { filetypes = { "ruby", "eruby" } },
+-- }
 
 -- [Mappings]
 
