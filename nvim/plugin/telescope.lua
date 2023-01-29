@@ -1,3 +1,8 @@
+-- Extend some of the FileBrowser action-- Extend some of the FileBrowser
+-- action-- Extend some of the FileBrowser actions
+
+local fb_actions = require "telescope".extensions.file_browser.actions
+
 require('telescope').setup {
     defaults = {
         vimgrep_arguments = {
@@ -58,6 +63,15 @@ require('telescope').setup {
             hijack_netrw = true,
             mappings = {
                 ["n"] = {
+                    -- Jump to ENV['HOME']
+                    ["h"] = fb_actions.goto_home_dir,
+                    -- Change Directory up CWD
+                    ["w"] = fb_actions.goto_cwd,
+                    -- Change Directory up a level
+                    ["u"] = fb_actions.goto_parent_dir,
+                    -- Toggle hidden files
+                    ["s"] = fb_actions.toggle_hidden,
+
                     -- Unmap tab. It can select files and directories without meaning
                     -- to if used to navigate the browser dir structure. When using
                     -- remove the dirs selected will be deleted along with the intentinal
