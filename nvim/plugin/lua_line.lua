@@ -49,7 +49,7 @@ require('lualine').setup {
         lualine_z = {}
     },
     tabline = {
-        lualine_a = { { 'buffers',
+        lualine_c = { { 'buffers',
             show_filename_only = true,
             hide_filename_extension = false,
             show_modified_status = true,
@@ -60,6 +60,10 @@ require('lualine').setup {
                 alternate_file = '#',
                 directory = '',
             },
+            buffers_color = {
+                active = 'lualine_c_normal',
+                inactive = 'lualine_c_inactive',
+            }
         } },
         lualine_y = { 'progress' },
         lualine_z = { 'location' }
