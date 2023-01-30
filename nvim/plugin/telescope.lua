@@ -46,7 +46,7 @@ require('telescope').setup {
         winblend = 0,
         border = {},
         borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' },
-        color_devicons = false,
+        color_devicons = true,
         use_less = true,
         set_env = { ['COLORTERM'] = 'truecolor' }, -- default = nil,
         file_previewer = require 'telescope.previewers'.vim_buffer_cat.new,
@@ -130,5 +130,7 @@ require('telescope').setup {
 -- File Browser Extension
 
 require("telescope").load_extension("file_browser")
+
+-- Command apllete
 
 require('telescope').load_extension('command_palette')
