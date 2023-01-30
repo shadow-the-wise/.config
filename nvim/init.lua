@@ -21,17 +21,13 @@ require('load_plugins')
 -- You can specify commands to be executed automatically when reading or
 -- writing a file, when entering or leaving a buffer or window, and when
 -- exiting Vim.
+
 local ok, res = pcall(require, 'commands.init')
 if not ok then
     vim.notify(res, vim.log.levels.ERROR)
 else
     require('commands.init')
 end
---require('commands.basic')
---require('commands.skeletons')
---require('commands.spell')
---require('commands.quits')
---require('commands.autocorrect')
 
 -- [Options] Internal variables and switches which can be set by the user.
 
@@ -42,21 +38,8 @@ else
     require('options.init')
 end
 
---require('options.command_window')
---require('options.completion')
---require('options.data')
---require('options.formatting')
---require('options.ignore')
---require('options.indent')
---require('options.list_chars')
---require('options.navigation')
---require('options.screen')
---require('options.search')
---require('options.speacial_keys')
---require('options.tab')
---require('options.spell')
+-- [Keymappings] Used to invoke keyboard shortcuts.
 
--- [Maps] Keymappings used to invoke shortcuts.
 local ok, res = pcall(require, 'keymaps.init')
 if not ok then
     vim.notify(res, vim.log.levels.ERROR)
@@ -64,18 +47,11 @@ else
     require('keymaps.init')
 end
 
---require('keymaps.navigation')
---require('keymaps.change_list')
---require('keymaps.jump_list')
---require('keymaps.search')
---require('keymaps.resize')
---require('keymaps.telescope')
---require('keymaps.hop')
-
 -- [LSP] Language server configuration.
 
-require('lsp.lsp_config')
-require('lsp.diagnostic')
-require('lsp.handlers')
--- require('lsp.null_ls')
--- require('lsp.highlighting')
+local ok, res = pcall(require, 'lsp.init')
+if not ok then
+    vim.notify(res, vim.log.levels.ERROR)
+else
+    require('lsp.init')
+end
