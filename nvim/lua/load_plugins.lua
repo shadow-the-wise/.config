@@ -130,6 +130,7 @@ return require('packer').startup(function(use)
         'rafamadriz/friendly-snippets',
     }
 
+    use 'nvim-tree/nvim-web-devicons'
 
 
     if packer_bootstrap then
