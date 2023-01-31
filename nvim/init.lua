@@ -22,36 +22,36 @@ require('load_plugins')
 -- writing a file, when entering or leaving a buffer or window, and when
 -- exiting Vim.
 
-local ok, res = pcall(require, 'commands.init')
-if not ok then
-    vim.notify(res, vim.log.levels.ERROR)
+local commands_ok, command_response = pcall(require, 'commands.init')
+if not commands_ok then
+    vim.notify(command_response, vim.log.levels.ERROR)
 else
     require('commands.init')
 end
 
 -- [Options] Internal variables and switches which can be set by the user.
 
-local ok, res = pcall(require, 'options.init')
-if not ok then
-    vim.notify(res, vim.log.levels.ERROR)
+local options_ok, options_response = pcall(require, 'options.init')
+if not options_ok then
+    vim.notify(options_response, vim.log.levels.ERROR)
 else
     require('options.init')
 end
 
 -- [Keymappings] Used to invoke keyboard shortcuts.
 
-local ok, res = pcall(require, 'keymaps.init')
-if not ok then
-    vim.notify(res, vim.log.levels.ERROR)
+local keymaps_ok, keymaps_response = pcall(require, 'keymaps.init')
+if not keymaps_ok then
+    vim.notify(keymaps_response, vim.log.levels.ERROR)
 else
     require('keymaps.init')
 end
 
 -- [LSP] Language server configuration.
 
-local ok, res = pcall(require, 'lsp.init')
-if not ok then
-    vim.notify(res, vim.log.levels.ERROR)
+local lsp_ok, lsp_response = pcall(require, 'lsp.init')
+if not lsp_ok then
+    vim.notify(lsp_response, vim.log.levels.ERROR)
 else
     require('lsp.init')
 end
