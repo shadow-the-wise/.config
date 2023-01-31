@@ -26,4 +26,3 @@ set.sidescroll = 1
 -- right of the cursor if 'nowrap' is set
 
 set.sidescrolloff = 100
-

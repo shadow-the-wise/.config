@@ -18,4 +18,6 @@ set.clipboard:append { 'unnamed', 'unnamedplus' }
 
 -- Use 256 Hex colors
 
-set.termguicolors = true
+if vim.fn.has("termguicolors") == 1 then
+    set.termguicolors = true
+end
