@@ -12,13 +12,25 @@ require("mason").setup({
 
 require("mason-lspconfig").setup({
     ensure_installed = {
+        -- LSP Setup
+
+        -- Ruby
         "solargraph",
+
+        -- Json
         "jsonls",
+
+        -- Lua
         "sumneko_lua",
+
+        -- Yaml
         "yamlls",
+
+        -- Html
         "html",
+
+        -- Css
         "cssls",
     },
     automatic_installation = true
 })
-

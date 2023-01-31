@@ -14,7 +14,7 @@ _G._packer.inside_compile = true
 
 local time
 local profile_info
-local should_profile = true
+local should_profile = false
 if should_profile then
   local hrtime = vim.loop.hrtime
   profile_info = {}
@@ -76,142 +76,142 @@ time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
   LuaSnip = {
     loaded = true,
-    path = "/Users/shadowchaser/.local/share/nvim/site/pack/packer/start/LuaSnip",
+    path = "/Users/shadowchaser/.local/state/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
   ["cmp-buffer"] = {
     loaded = true,
-    path = "/Users/shadowchaser/.local/share/nvim/site/pack/packer/start/cmp-buffer",
+    path = "/Users/shadowchaser/.local/state/nvim/site/pack/packer/start/cmp-buffer",
     url = "https://github.com/hrsh7th/cmp-buffer"
   },
   ["cmp-cmdline"] = {
     loaded = true,
-    path = "/Users/shadowchaser/.local/share/nvim/site/pack/packer/start/cmp-cmdline",
+    path = "/Users/shadowchaser/.local/state/nvim/site/pack/packer/start/cmp-cmdline",
     url = "https://github.com/hrsh7th/cmp-cmdline"
   },
   ["cmp-nvim-lsp"] = {
     loaded = true,
-    path = "/Users/shadowchaser/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
+    path = "/Users/shadowchaser/.local/state/nvim/site/pack/packer/start/cmp-nvim-lsp",
     url = "https://github.com/hrsh7th/cmp-nvim-lsp"
   },
   ["cmp-nvim-lsp-document-symbol"] = {
     loaded = true,
-    path = "/Users/shadowchaser/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp-document-symbol",
+    path = "/Users/shadowchaser/.local/state/nvim/site/pack/packer/start/cmp-nvim-lsp-document-symbol",
     url = "https://github.com/hrsh7th/cmp-nvim-lsp-document-symbol"
   },
   ["cmp-nvim-lsp-signature-help"] = {
     loaded = true,
-    path = "/Users/shadowchaser/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp-signature-help",
+    path = "/Users/shadowchaser/.local/state/nvim/site/pack/packer/start/cmp-nvim-lsp-signature-help",
     url = "https://github.com/hrsh7th/cmp-nvim-lsp-signature-help"
   },
   ["cmp-path"] = {
     loaded = true,
-    path = "/Users/shadowchaser/.local/share/nvim/site/pack/packer/start/cmp-path",
+    path = "/Users/shadowchaser/.local/state/nvim/site/pack/packer/start/cmp-path",
     url = "https://github.com/hrsh7th/cmp-path"
   },
   cmp_luasnip = {
     loaded = true,
-    path = "/Users/shadowchaser/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
+    path = "/Users/shadowchaser/.local/state/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
   ["friendly-snippets"] = {
     loaded = true,
-    path = "/Users/shadowchaser/.local/share/nvim/site/pack/packer/start/friendly-snippets",
+    path = "/Users/shadowchaser/.local/state/nvim/site/pack/packer/start/friendly-snippets",
     url = "https://github.com/rafamadriz/friendly-snippets"
   },
   ["hop.nvim"] = {
     loaded = true,
-    path = "/Users/shadowchaser/.local/share/nvim/site/pack/packer/start/hop.nvim",
+    path = "/Users/shadowchaser/.local/state/nvim/site/pack/packer/start/hop.nvim",
     url = "https://github.com/phaazon/hop.nvim"
   },
   ["indent-blankline.nvim"] = {
     loaded = true,
-    path = "/Users/shadowchaser/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
+    path = "/Users/shadowchaser/.local/state/nvim/site/pack/packer/start/indent-blankline.nvim",
     url = "https://github.com/lukas-reineke/indent-blankline.nvim"
   },
   ["lualine.nvim"] = {
     loaded = true,
-    path = "/Users/shadowchaser/.local/share/nvim/site/pack/packer/start/lualine.nvim",
+    path = "/Users/shadowchaser/.local/state/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
   },
   ["mason-lspconfig.nvim"] = {
     loaded = true,
-    path = "/Users/shadowchaser/.local/share/nvim/site/pack/packer/start/mason-lspconfig.nvim",
+    path = "/Users/shadowchaser/.local/state/nvim/site/pack/packer/start/mason-lspconfig.nvim",
     url = "https://github.com/williamboman/mason-lspconfig.nvim"
   },
   ["mason.nvim"] = {
     loaded = true,
-    path = "/Users/shadowchaser/.local/share/nvim/site/pack/packer/start/mason.nvim",
+    path = "/Users/shadowchaser/.local/state/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
   },
   ["nord-vim"] = {
     loaded = true,
-    path = "/Users/shadowchaser/.local/share/nvim/site/pack/packer/start/nord-vim",
+    path = "/Users/shadowchaser/.local/state/nvim/site/pack/packer/start/nord-vim",
     url = "https://github.com/arcticicestudio/nord-vim"
   },
   ["null-ls.nvim"] = {
     loaded = true,
-    path = "/Users/shadowchaser/.local/share/nvim/site/pack/packer/start/null-ls.nvim",
+    path = "/Users/shadowchaser/.local/state/nvim/site/pack/packer/start/null-ls.nvim",
     url = "https://github.com/jose-elias-alvarez/null-ls.nvim"
   },
   ["nvim-autopairs"] = {
     loaded = true,
-    path = "/Users/shadowchaser/.local/share/nvim/site/pack/packer/start/nvim-autopairs",
+    path = "/Users/shadowchaser/.local/state/nvim/site/pack/packer/start/nvim-autopairs",
     url = "https://github.com/windwp/nvim-autopairs"
   },
   ["nvim-cmp"] = {
     loaded = true,
-    path = "/Users/shadowchaser/.local/share/nvim/site/pack/packer/start/nvim-cmp",
+    path = "/Users/shadowchaser/.local/state/nvim/site/pack/packer/start/nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
-    path = "/Users/shadowchaser/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
+    path = "/Users/shadowchaser/.local/state/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
+  },
+  ["nvim-web-devicons"] = {
+    loaded = true,
+    path = "/Users/shadowchaser/.local/state/nvim/site/pack/packer/start/nvim-web-devicons",
+    url = "https://github.com/nvim-tree/nvim-web-devicons"
   },
   ["packer.nvim"] = {
     loaded = true,
-    path = "/Users/shadowchaser/.local/share/nvim/site/pack/packer/start/packer.nvim",
+    path = "/Users/shadowchaser/.local/state/nvim/site/pack/packer/start/packer.nvim",
     url = "https://github.com/wbthomason/packer.nvim"
   },
   ["plenary.nvim"] = {
     loaded = true,
-    path = "/Users/shadowchaser/.local/share/nvim/site/pack/packer/start/plenary.nvim",
+    path = "/Users/shadowchaser/.local/state/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
   ["telescope-command-palette.nvim"] = {
     loaded = true,
-    path = "/Users/shadowchaser/.local/share/nvim/site/pack/packer/start/telescope-command-palette.nvim",
+    path = "/Users/shadowchaser/.local/state/nvim/site/pack/packer/start/telescope-command-palette.nvim",
     url = "https://github.com/LinArcX/telescope-command-palette.nvim"
   },
   ["telescope-file-browser.nvim"] = {
     loaded = true,
-    path = "/Users/shadowchaser/.local/share/nvim/site/pack/packer/start/telescope-file-browser.nvim",
+    path = "/Users/shadowchaser/.local/state/nvim/site/pack/packer/start/telescope-file-browser.nvim",
     url = "https://github.com/nvim-telescope/telescope-file-browser.nvim"
   },
   ["telescope.nvim"] = {
     loaded = true,
-    path = "/Users/shadowchaser/.local/share/nvim/site/pack/packer/start/telescope.nvim",
+    path = "/Users/shadowchaser/.local/state/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
-  },
-  ["vim-devicons"] = {
-    loaded = true,
-    path = "/Users/shadowchaser/.local/share/nvim/site/pack/packer/start/vim-devicons",
-    url = "https://github.com/ryanoasis/vim-devicons"
   },
   ["vim-fugitive"] = {
     loaded = true,
-    path = "/Users/shadowchaser/.local/share/nvim/site/pack/packer/start/vim-fugitive",
+    path = "/Users/shadowchaser/.local/state/nvim/site/pack/packer/start/vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
   },
   ["vim-gitgutter"] = {
     loaded = true,
-    path = "/Users/shadowchaser/.local/share/nvim/site/pack/packer/start/vim-gitgutter",
+    path = "/Users/shadowchaser/.local/state/nvim/site/pack/packer/start/vim-gitgutter",
     url = "https://github.com/airblade/vim-gitgutter"
   },
   ["vim-rainbow"] = {
     loaded = true,
-    path = "/Users/shadowchaser/.local/share/nvim/site/pack/packer/start/vim-rainbow",
+    path = "/Users/shadowchaser/.local/state/nvim/site/pack/packer/start/vim-rainbow",
     url = "https://github.com/frazrepo/vim-rainbow"
   }
 }

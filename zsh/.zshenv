@@ -53,6 +53,9 @@ export XDG_CACHE_HOME="$HOME/.cache"
 # Neovim data directory shada,site,autoload,pluggins
 export XDG_DATA_HOME="$HOME/.local/share"
 
+# Neovim state directory contains data that persists between app restarts
+export XDG_DATA_HOME="$HOME/.local/state"
+
 # }}}
 # zsh {{{1
 
