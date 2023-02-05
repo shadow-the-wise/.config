@@ -7,21 +7,16 @@ local SpellGroup = vim.api.nvim_create_augroup("SpellGroup", { clear = true })
 vim.api.nvim_create_autocmd({ "BufEnter", "WinEnter" }, {
     group = SpellGroup,
     desc = 'Set spell for filetypes of a text based language',
-    pattern = { "*.txt", "*.md", "*.tex", "*.text", "markdown" },
     callback = function()
-        if not "&ft" == 'help' or 'man' then
+        local ft = vim.bo.filetype
+        if ft == 'text' then
             vim.opt.spell = true
             vim.opt.spelllang = "en"
+        elseif ft == 'markdown' then
+            vim.opt.spell = true
+            vim.opt.spelllang = "en"
+        else
+            vim.opt.spell = false
         end
-    end,
-})
-
--- Turn off spell checking when changing buffer or window
-
-vim.api.nvim_create_autocmd({ "BufLeave", "BufHidden", "WinLeave" }, {
-    group = SpellGroup,
-    desc = 'Set no spell when leaveing a buffer or window',
-    callback = function()
-        vim.opt.spell = false
     end,
 })
