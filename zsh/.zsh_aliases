@@ -49,6 +49,8 @@ alias v="$EDITOR"
 #
 alias vs="$EDITOR -S"
 
+# Open neovim diff
+#
 alias vd="$EDITOR -d"
 
 # }}}
