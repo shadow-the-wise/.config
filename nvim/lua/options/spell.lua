@@ -9,6 +9,10 @@ set.spell = false
 
 set.spelllang = "en_gb"
 
+-- limit the results of the spell correction
+
+set.spellsuggest = "10"
+
 -- [spell options]
 
 -- When a word is CamelCased, assume "Cased" is a separate word.
