@@ -114,6 +114,7 @@ require('telescope').setup {
                 { "Marks List", ":lua require('telescope.builtin').marks()" },
                 { "Tags - Current Directory", ":lua require('utils').search_tags()" },
                 { "Tags - Current Files", ":lua require('telescope.builtin').tagstack()" },
+                { "Sessions - Recent project sessions", ":lua require('utils').sessions()" },
             },
             { "LSP",
                 { "LSP References", ":lua require('telescope.builtin').lsp_references()" },
