@@ -5,8 +5,22 @@
 #==============================================================================
 # Zsh Aliases
 #==============================================================================
-# globals {{{1
 #
+# reload shell
+alias reload="exec ${SHELL} -l"
+
+# Print each PATH entry on a separate line
+alias path='echo -e ${PATH//:/\\n}'
+
+# lock the screen
+alias lock='pmset displaysleepnow'
+
+# reboot the system
+alias reboot='sudo /sbin/reboot'
+
+# shutdown the system
+alias shutdown='sudo /sbin/shutdown'
+
 # Global variables let the user alias unix programs. Typicaly somthing is being
 # passed to the alias (hence the proceeding pipe).
 
@@ -19,9 +33,6 @@ alias -g N="| /dev/null"
 alias -g S='| sort'
 alias -g A='| awk'
 
-# }}}
-# Remove File {{{1
-
 #  -I
 #  Request confirmation once if more than three files are being removed or if a
 #  directory is being recursively removed. This is a far less intrusive option
@@ -29,16 +40,16 @@ alias -g A='| awk'
 #
 alias rm="rm -I"
 
-# }}}
-# mkdir {{{1
+alias cp="cp -i"
+
+alias mv="mv -i"
+
+alias ln="ln -i"
 
 # Create intermediate directories as required.  If this option is not
 # specified, the full path prefix of each operand must already exist.
 
 alias 'mkdir=mkdir -p'
-
-# }}}
-# Editor {{{1
 
 # The editor variable is set in .zshenv. This is a global editor variable and
 # is set to neovim text editor.
@@ -53,17 +64,14 @@ alias vs="$EDITOR -S"
 #
 alias vd="$EDITOR -d"
 
-# }}}
-# list directories {{{1
-
 # list all directories and hidden files
-alias l="ls -lah"
+# alias l="ls -lah"
+alias l='colorls -lA --sd --gs'
+
+alias tree='colorls --tree'
 
 # list all directories
 alias ll="ls -lh"
-
-# }}}
-# grep {{{1
 
 # --color[=WHEN], --colour[=WHEN]
 #
@@ -74,9 +82,6 @@ alias ll="ls -lh"
 # grep - Grep searches for PATTERNS in each FILE.
 #
 alias grep="grep --color=auto"
-
-# }}}
-# history {{{1
 
 # -i 1
 #
@@ -89,9 +94,6 @@ alias history="history -i 1 -1"
 # Alias history to h
 alias h="history"
 
-# }}}
-# Show/hide hidden files in Finder {{{1
-
 # opens finder in $PWD
 alias finder='open .'
 
@@ -101,8 +103,8 @@ alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && kill
 # hide hidden files in the directory
 alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
 
-# }}}
-# jobs {{{1
+# remove all DS_Stores
+alias cleanup="find . -name '.DS_Store' -type f -ls -delete"
 
 # -l
 # Provide more information about each job listed.
@@ -110,9 +112,6 @@ alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && kil
 # jobs — display status of jobs in the current session
 #
 alias j="jobs -l"
-
-# }}}
-# shortcuts {{{1
 
 # todo
 # open the todo file using a function that is only evaluated when its called.
@@ -125,43 +124,8 @@ alias td="v $(find ~/.notes/todo.md)"
 #
 alias za="v $(find $ZDOTDIR/.zsh_aliases)"
 
-# }}}
-# suffix {{{1
-#
-# Suffix Aliases are defined using the -s flag. With suffix aliases, you can
-# launch files with a specific extension (or suffix) using your favorite tool.
-# To register a suffix alias, we use the alias -s extension=name-of-the-tool
-# pattern.
-
-# text and programing
-# alias -s txt="$EDITOR"
-# alias -s md="$EDITOR"
-# alias -s rb="$EDITOR"
-# alias -s zsh="$EDITOR"
-# alias -s sh="$EDITOR"
-# alias -s vim="$EDITOR"
-# alias -s erb="$EDITOR"
-
-# images
-alias -s png="open"
-alias -s jpg="open"
-alias -s tif="open"
-
-# music
-alias -s wav="open"
-alias -s m4a="open"
-
-# movie
-alias -s mp4="open"
-alias -s m4v="open"
-alias -s eac3="open"
-alias -s movi="open"
-alias -s caf="open"
-alias -s aiff="open"
-
-# }}}
-# dir stack {{{1
-#-------------------------------------------------------------------------------
+# open env variable files
+alias ze="v $(find $ZDOTDIR/.zshenv)"
 
 # Zsh can be configured to remember the DIRSTACKSIZE last visited folders. This
 # can then be used to cd them very quickly. You need to add some lines to your
@@ -205,10 +169,6 @@ alias 18='cd +18'
 alias 19='cd +19'
 alias 20='cd +20'
 
-
-# }}}
-# counts {{{1
-
 # topten commands
 alias topten="history | commands | sort -rn | head"
 
@@ -220,9 +180,6 @@ alias du='du -h -c'
 
 # show disc space
 alias d_sizes="df -H"
-
-# }}}
-# duplicates {{{1
 
 # dup <file1> <file2>
 #
@@ -238,9 +195,6 @@ alias ndup="nduplicate"
 
 # alias tasks='grep --exclude-dir=.git -rEI "TODO|FIXME|NOTE" . 2>/dev/null'
 
-# }}}
-# git {{{1
-
 # Alias the git command to a single letter
 alias g='git'
 
@@ -253,20 +207,7 @@ alias vr="$EDITOR $XDG_CONFIG_HOME/nvim/init.vim"
 # Edit resource file for zsh
 alias zr="$EDITOR $ZDOTDIR/.zshrc"
 
-# }}}
-# Misc {{{1
-
-# curl aliased to get
-alias get="curl -O -L"
-
 # rails console
 alias rc="rails c"
 
 alias c_last="fc -l -1 | cut -d\  -f3- | pbcopy"    # copy last command to clip
-# }}}
-# old function {{{1
-
-# update has been made into a function for formatting reasons
-# ~/.zsh/function/update
-
-# }}}
