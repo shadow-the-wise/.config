@@ -60,3 +60,13 @@ if not telescope_ok then
 else
     require('keymaps.telescope')
 end
+
+
+-- nvim keymaps for the diagnostics
+
+local diagnostics_ok, diagnostics_response = pcall(require, 'keymaps.diagnostics')
+if not diagnostics_ok then
+    vim.notify(diagnostics_response, vim.log.levels.ERROR)
+else
+    require('keymaps.diagnostics')
+end
