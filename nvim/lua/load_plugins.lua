@@ -54,7 +54,7 @@ return require('packer').startup(function(use)
 
     -- [Braces]
 
-    use { 'frazrepo/vim-rainbow' }
+    -- use { 'frazrepo/vim-rainbow' }
 
     -- [ColorScheme]
 
@@ -130,7 +130,13 @@ return require('packer').startup(function(use)
         'rafamadriz/friendly-snippets',
     }
 
+    -- devicons icon set
+
     use 'nvim-tree/nvim-web-devicons'
+
+    -- prittier formatter
+
+    use('MunifTanjim/prettier.nvim')
 
 
     if packer_bootstrap then

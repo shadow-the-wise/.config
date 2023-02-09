@@ -163,14 +163,14 @@ function parse_git_branch() {
     OUTPUT=$(git branch 2> /dev/null)
   if [[ $? -eq 0 ]]; then
     local EXIT_CODE_PROMPT=''
-    EXIT_CODE_PROMPT+="%K{white} %F{#4C566A}%f %F{#102040}%(5~|%-1~/…/%3~|%4~)%f%k"
+    EXIT_CODE_PROMPT+="%K{white} %F{#4C566A}%f %F{#102040}%(5~|%-1~/…/%3~|%4~)%f%k"
     EXIT_CODE_PROMPT+="%K{blue}%F{white}${div}%f%k"
     EXIT_CODE_PROMPT+="%K{blue}%F{#4C566A}  %f%F{black}git:(%f%F{red}$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')%f%F{black})%f%k"
     EXIT_CODE_PROMPT+="%K{#2E3440}%F{blue}${div}%f%k"
     echo "$EXIT_CODE_PROMPT"
   else
     local NO_GIT=''
-    NO_GIT+="%K{white}%F{#4C566A} %f %F{#102040}%(5~|%-1~/…/%3~|%4~)%f%k%K{#2E3440}%F{white}${div}%f%k"
+    NO_GIT+="%K{white}%F{#4C566A} %f %F{#102040}%(5~|%-1~/…/%3~|%4~)%f%k%K{#2E3440}%F{white}${div}%f%k"
     echo "$NO_GIT"
   fi
 }
@@ -213,7 +213,7 @@ function ahead_behind {
 # 11408D
 
 # Date and Time
-local basic="%K{black}%F{white} ${date} ${prompt_time}%f%k"
+local basic="%K{black}%F{white} ${date} ${prompt_time}%f%k"
 basic+="%K{#5A5C5C}%F{black}${div}%f%k"
 # Jobs
 basic+="%K{#5A5C5C}[%F{green}${prompt_jobs}%f]%k"
@@ -437,6 +437,7 @@ fpath=($ZDOTDIR/functions/ $fpath)
 
 #}}}
 # completion {{{1
+
 zstyle ':autocomplete:*' default-context ''
 # '': Start each new command line with normal autocompletion.
 # history-incremental-search-backward: Start in live history search mode.

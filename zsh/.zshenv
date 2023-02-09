@@ -1,8 +1,7 @@
 #==============================================================================
-# Directory: Zsh Env
-# Date: January 16, 2023
+# file: Zsh Env
+# Date: 2023-02-07
 #==============================================================================
-# hosttype {{{1
 
 # HOSTTYPE = { Linux | darwin | etc. }
 if which uname &>/dev/null; then
@@ -12,14 +11,13 @@ else
 fi
 
 export HOSTTYPE
-# }}}
-# path {{{1
+
+export LANG='en_US.UTF-8'
 
 # Validate .bin directory exists
-if [[ -d "$HOME/.bin" ]]; then
-    export PATH="${PATH:+${PATH}:}$HOME/.bin:/usr/local/bin"
+if [[ -d "$HOME/.local/bin" ]]; then
+    export PATH="${PATH:+${PATH}:}/usr/local/bin:$HOME/.local/bin"
 fi
-
 
 # Validate node@16 directory exists
 if [[ -d "/usr/local/opt/node@16" ]]; then
@@ -33,21 +31,12 @@ if [[ -d "/usr/local/opt/python@3.10" ]]; then
     export PATH="${PATH:+${PATH}:}/usr/local/opt/python@3.10/bin"
 fi
 
-# Add neovim
-#export PATH="${PATH:+${PATH}:}/usr/local/opt/neovim"
+# XDG Compliant configuration
 
-# }}}
-# lang {{{1
-
-export LANG='en_US.UTF-8'
-
-# }}}
-# config {{{1
-
-# you can have all your configuration files in $HOME/.config
+# Configuration files in $HOME/.config
 export XDG_CONFIG_HOME="$HOME/.config"
 
-# set the cache directory apps will look for
+# Set the cache directory apps will look for
 export XDG_CACHE_HOME="$HOME/.cache"
 
 # Neovim data directory shada,site,autoload,pluggins
@@ -56,14 +45,11 @@ export XDG_DATA_HOME="$HOME/.local/share"
 # Neovim state directory contains data that persists between app restarts
 export XDG_DATA_HOME="$HOME/.local/state"
 
-# }}}
-# zsh {{{1
-
 # set the zsh directory
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 
-# }}}
-# homebrew {{{1
+# XDG Compliant
+export SOLARGRAPH_CACHE=$XDG_CACHE_HOME/solargraph
 
 # homebrew no emojis
 export HOMEBREW_NO_EMOJI=1
@@ -71,22 +57,19 @@ export HOMEBREW_PREFIX="/usr/local";
 export HOMEBREW_CELLAR="/usr/local/Cellar";
 export HOMEBREW_REPOSITORY="/usr/local/Homebrew";
 export HOMEBREW_SHELLENV_PREFIX="/usr/local";
-#export PATH="/usr/local/bin:/usr/local/sbin${PATH+:$PATH}";
+
 export MANPATH="/usr/local/share/man${MANPATH+:$MANPATH}:";
-#export INFOPATH="/usr/local/share/info:${INFOPATH:-}";
-
-# }}}
-# rbenv {{{1
-
-# zshrc eval (init -) adds the shims to the path
 
 export LDFLAGS="-L/usr/local/opt/readline/lib"
 export CPPFLAGS="-I/usr/local/opt/readline/include"
 export PKG_CONFIG_PATH="/usr/local/opt/readline/lib/pkgconfig"
 export RBENV_VERSION="3.0.0"
 
-# }}}
-# nvim {{{1
+# git env
+export GIT_AUTHOR_NAME="shadowchaser04"
+export GIT_COMMITTER_NAME="shadowchaser04"
+export GIT_AUTHOR_EMAIL="shadowchasing@icloud.com"
+export GIT_COMMITTER_EMAIL="shadowchasing@icloud.com"
 
 # if editor is present, set default editor
 if [[ -x $(which nvim 2> /dev/null) ]]; then
@@ -94,9 +77,6 @@ if [[ -x $(which nvim 2> /dev/null) ]]; then
     export USE_EDITOR=$EDITOR
     export VISUAL=$EDITOR
 fi
-
-# }}}
-# less {{{1
 
 # Set less options
 if [[ -x $(which less 2> /dev/null) ]]; then
@@ -110,26 +90,14 @@ if [[ -x $(which less 2> /dev/null) ]]; then
 
     # less pipe is a preprocessor.
     if [[ -x $(which lesspipe 2> /dev/null) ]]; then
-	LESSOPEN="| lesspipe %s"
-	export LESSOPEN
+        LESSOPEN="| lesspipe %s"
+        export LESSOPEN
     fi
 fi
-
-# }}}
-# manpage {{{1
 
 # man page piped to vim
 export MANPAGER='nvim +Man!'
 export MANWIDTH=999
-
-# }}}
-# solagraph {{{1
-
-# XDG Compliant
-export SOLARGRAPH_CACHE=$XDG_CACHE_HOME/solargraph
-
-# }}}
-# misc {{{!
 
 # Esc key reduced lag time
 export KEYTIMEOUT=1
@@ -137,8 +105,6 @@ export KEYTIMEOUT=1
 # Say how long a command took, if it took more than 30 seconds
 export REPORTTIME=30
 
-# }}}
-# colors {{{1
 # e - Directory
 # f - Symbolic Link
 
@@ -152,4 +118,3 @@ export CLICOLOR=1
 # lscolors
 export LSCOLORS='exfxhxDefxhxhxhxhxcxcx'
 
-# }}}

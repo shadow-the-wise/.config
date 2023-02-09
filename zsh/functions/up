@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-# dir level up or provide a numeric leve - up 3
+# dir level up or provide a numeric level - up 3
 function up {
         if [[ "$#" < 1 ]] ; then
             cd ..

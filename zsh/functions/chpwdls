@@ -2,7 +2,7 @@
 
 function chpwdls {
     clear
-    ls -la
+    colorls -lA --sd --gs
 }
 
 add-zsh-hook -Uz chpwd chpwdls

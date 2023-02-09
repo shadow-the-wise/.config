@@ -8,7 +8,7 @@ set.autochdir = true
 
 -- hide buffers without unsaved changes without being prompted
 
-set.hidden = true
+set.hidden = false
 
 -- read file again if it has changed outside of vim while open
 

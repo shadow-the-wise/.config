@@ -1,37 +1,12 @@
--- local null_ls = require("null-ls")
-
--- Create a variable for the null_ls.builtins
-
--- local b = null_ls.builtins
-
--- Create a sources list for chosen formatters and filetypes
-
--- local sources = {
--- format html and markdown
--- b.formatting.prettier.with { filetypes = { "json", "html", "yaml", "css", "scss", "less" } },
--- b.diagnostics.rubocop.with { filetypes = { "ruby", "eruby" } },
--- }
-
 -- [Mappings]
 
--- See `:help vim.diagnostic.*` for documentation on any of the below functions
-
-local opts = { noremap = true, silent = true }
-
-vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
-vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
-
 -- Create a group for our formatting
-
-local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+local LspFormatting = vim.api.nvim_create_augroup("LspFormatting", {})
 
 -- Use an on_attach function to only map the following keys after the language
 -- server attaches to the current buffer
 
 local on_attach = function(client, bufnr)
-
     -- Server capabilities spec:
     -- https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#serverCapabilities
     if client.server_capabilities.documentHighlightProvider then
@@ -54,13 +29,14 @@ local on_attach = function(client, bufnr)
     -- formatting on save
 
     if client.supports_method "textDocument/formatting" then
-        vim.api.nvim_clear_autocmds { group = augroup, buffer = bufnr }
+        vim.api.nvim_clear_autocmds { group = LspFormatting, buffer = bufnr }
         vim.api.nvim_create_autocmd("BufWritePre", {
-            group = augroup,
+            group = LspFormatting,
             buffer = bufnr,
             callback = function()
                 -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
                 vim.lsp.buf.format({ bufnr = bufnr })
+                print("formatted by " .. client.name)
             end,
         })
     end
@@ -92,11 +68,9 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
     vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
     vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
-
 end
 
 local lsp_flags = {
-
     -- This is the default in Nvim 0.7+
     debounce_text_changes = 150,
 }
@@ -113,7 +87,6 @@ require('lspconfig').jsonls.setup {
     on_attach = on_attach,
     flags = lsp_flags,
     capabilities = capabilities,
-    -- sources = sources
 }
 
 -- [RUBY]
@@ -127,10 +100,24 @@ require('lspconfig')["solargraph"].setup {
     init_options = { formatting = true },
     settings = {
         solargraph = {
-            diagnostics = true
+            diagnostics     = true,
+            autoformat      = true,
+            bundlerPath     = "bundle",
+            checkGemVersion = true,
+            commandPath     = "solargraph",
+            completion      = true,
+            definitions     = true,
+            folding         = true,
+            formatting      = true,
+            hover           = true,
+            logLevel        = "warn",
+            references      = true,
+            rename          = true,
+            symbols         = true,
+            transport       = "socket",
+            useBundler      = false
         }
     },
-    -- sources = sources,
 }
 
 -- [YAML]
@@ -139,7 +126,6 @@ require('lspconfig')["yamlls"].setup {
     on_attach = on_attach,
     flags = lsp_flags,
     capabilities = capabilities,
-    -- sources = sources,
 }
 
 -- [LUA]
@@ -164,7 +150,6 @@ require('lspconfig')["html"].setup {
     flags = lsp_flags,
     capabilities = capabilities,
     filetypes = { "html", "eruby" },
-    -- sources = sources,
 }
 
 -- [CSS]
@@ -173,5 +158,17 @@ require('lspconfig')["cssls"].setup {
     on_attach = on_attach,
     flags = lsp_flags,
     capabilities = capabilities,
-    -- sources = sources
+    filetypes = { "css", "scss", "less" },
+    cmd = { "vscode-css-language-server", "--stdio" },
+    settings = {
+        css = {
+            validate = true
+        },
+        less = {
+            validate = true
+        },
+        scss = {
+            validate = true
+        }
+    }
 }

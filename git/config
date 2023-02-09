@@ -132,6 +132,13 @@
 # ALIASES
 #==============================================================================
 [alias]
+
+# Show the user email for the current repository.
+whoami = config user.email
+
+# List contributors with number of commits.
+contributors = shortlog --summary --numbered
+
 # root {{{1
 
 # rev-parse

@@ -184,6 +184,11 @@ _G.packer_plugins = {
     path = "/Users/shadowchaser/.local/state/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
+  ["prettier.nvim"] = {
+    loaded = true,
+    path = "/Users/shadowchaser/.local/state/nvim/site/pack/packer/start/prettier.nvim",
+    url = "https://github.com/MunifTanjim/prettier.nvim"
+  },
   ["telescope-command-palette.nvim"] = {
     loaded = true,
     path = "/Users/shadowchaser/.local/state/nvim/site/pack/packer/start/telescope-command-palette.nvim",
@@ -208,11 +213,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/shadowchaser/.local/state/nvim/site/pack/packer/start/vim-gitgutter",
     url = "https://github.com/airblade/vim-gitgutter"
-  },
-  ["vim-rainbow"] = {
-    loaded = true,
-    path = "/Users/shadowchaser/.local/state/nvim/site/pack/packer/start/vim-rainbow",
-    url = "https://github.com/frazrepo/vim-rainbow"
   }
 }
 
