@@ -5,4 +5,5 @@ startuppopupversion: 5
 customcommandshistory:
 - quit
 - q
+- ""
 hidecommandlog: false

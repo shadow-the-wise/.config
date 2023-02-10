@@ -1,6 +1,7 @@
 gui:
   # stuff relating to the UI
   windowSize: 'normal' # one of 'normal' | 'half' | 'full' default is 'normal'
+
   scrollHeight: 2 # how many lines you scroll by
   scrollPastBottom: true # enable scrolling past the bottom
   sidePanelWidth: 0.3333 # number from 0 to 1
@@ -10,7 +11,7 @@ gui:
   timeFormat: '02 Jan 06 15:04 MST' # https://pkg.go.dev/time#Time.Format
   theme:
     activeBorderColor:
-      - green
+      - blue
       - bold
     inactiveBorderColor:
       - white
@@ -35,7 +36,7 @@ gui:
   skipStashWarning: false
   showFileTree: true # for rendering changes files in a tree format
   showListFooter: true # for seeing the '5 of 20' message in list panels
-  showRandomTip: true
+  showRandomTip: false
   showBottomLine: true # for hiding the bottom information line (unless it has important information to tell you)
   showCommandLog: true
   showIcons: true
@@ -134,8 +135,8 @@ keybinding:
     scrollDownMain-alt2: '<c-d>' # main panel scroll down
     executeCustomCommand: ':'
     createRebaseOptionsMenu: 'm'
-    pushFiles: 'P'
-    pullFiles: 'p'
+    pushFiles: 'p'
+    pullFiles: 'P'
     refresh: 'R'
     createPatchOptionsMenu: '<c-p>'
     nextTab: ']'
@@ -222,5 +223,3 @@ keybinding:
     update: 'u'
     bulkMenu: 'b'
 
-gui:
-  showIcons: true
