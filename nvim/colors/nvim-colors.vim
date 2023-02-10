@@ -29,3 +29,5 @@ highlight! link CmpItemKindMethod CmpItemKindFunction
 " Highlight yank remove underline (it removes the underline from the second
 " result on increemtal highlight"
 hi IncSearch cterm=none ctermfg=15 ctermbg=12 gui=none guifg=#eceff4 guibg=#5e81ac
+
+hi LspFormatting guifg=#81A1C1

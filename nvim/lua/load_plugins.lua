@@ -12,134 +12,127 @@ end
 local packer_bootstrap = ensure_packer()
 
 return require('packer').startup(function(use)
+        -- [Package Manager]
 
-    -- [Package Manager]
+        use 'wbthomason/packer.nvim'
 
-    use 'wbthomason/packer.nvim'
+        -- [StatusLine]
 
-    -- [StatusLine]
+        use {
+            'nvim-lualine/lualine.nvim',
+            -- requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+        }
 
-    use {
-        'nvim-lualine/lualine.nvim',
-        -- requires = { 'kyazdani42/nvim-web-devicons', opt = true }
-    }
+        -- [Navigation]
 
-    -- [Navigation]
+        use {
+            'nvim-telescope/telescope.nvim', tag = '0.1.1',
+            -- or                            , branch = '0.1.x',
+            requires = { { 'nvim-lua/plenary.nvim' } }
+        }
 
-    use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.1',
-        -- or                            , branch = '0.1.x',
-        requires = { { 'nvim-lua/plenary.nvim' } }
-    }
+        use { "nvim-telescope/telescope-file-browser.nvim" }
+        use { "LinArcX/telescope-command-palette.nvim" }
 
-    use { "nvim-telescope/telescope-file-browser.nvim" }
-    use { "LinArcX/telescope-command-palette.nvim" }
+        use {
+            'phaazon/hop.nvim',
+            branch = 'v2', -- optional but strongly recommended
+        }
 
-    use {
-        'phaazon/hop.nvim',
-        branch = 'v2', -- optional but strongly recommended
-    }
+        --use { 'rhysd/clever-f.vim' }
 
-    --use { 'rhysd/clever-f.vim' }
+        -- [Indentation]
 
-    -- [Indentation]
+        use { "lukas-reineke/indent-blankline.nvim" }
 
-    use { "lukas-reineke/indent-blankline.nvim" }
+        --  [AutoPair]
 
-    --  [AutoPair]
+        use {
+            "windwp/nvim-autopairs",
+        }
 
-    use {
-        "windwp/nvim-autopairs",
-    }
+        -- [Braces]
 
-    -- [Braces]
+        -- use { 'frazrepo/vim-rainbow' }
 
-    -- use { 'frazrepo/vim-rainbow' }
+        -- [ColorScheme]
 
-    -- [ColorScheme]
+        use {
+            'arcticicestudio/nord-vim',
+        }
 
-    use {
-        'arcticicestudio/nord-vim',
-    }
+        -- [Git]
 
-    -- [Git]
+        use { 'airblade/vim-gitgutter' }
 
-    use { 'airblade/vim-gitgutter' }
+        use { 'tpope/vim-fugitive' }
 
-    use { 'tpope/vim-fugitive' }
+        -- [Complition]
 
-    -- [Complition]
+        -- Automatically set up your configuration after cloning packer.nvim
+        -- Put this at the end after all plugins
 
-    -- Automatically set up your configuration after cloning packer.nvim
-    -- Put this at the end after all plugins
+        -- [LSP]
 
-    -- [LSP]
+        use {
 
-    use {
+            -- Portable package manager for Neovim
+            -- Easily install and manage LSP servers, DAP servers, linters, and formatters.
 
-        -- Portable package manager for Neovim
-        -- Easily install and manage LSP servers, DAP servers, linters, and formatters.
+            "williamboman/mason.nvim",
+            "williamboman/mason-lspconfig.nvim"
+        }
 
-        "williamboman/mason.nvim",
-        "williamboman/mason-lspconfig.nvim"
-    }
+        use {
+            -- Quickstart configs for Nvim LSP
 
-    use {
-        -- Quickstart configs for Nvim LSP
+            'neovim/nvim-lspconfig',
 
-        'neovim/nvim-lspconfig',
+            -- Neovim doesn't provide a way for non-LSP sources to hook into its LSP
+            -- client. null-ls is an attempt to bridge that gap and simplify the
+            -- process of creating, sharing, and setting up LSP sources using pure Lua.
 
-        -- Neovim doesn't provide a way for non-LSP sources to hook into its LSP
-        -- client. null-ls is an attempt to bridge that gap and simplify the
-        -- process of creating, sharing, and setting up LSP sources using pure Lua.
+            -- null-ls is also an attempt to reduce the boilerplate required to set
+            -- up general-purpose language servers and improve performance by
+            -- removing the need for external processes.
 
-        -- null-ls is also an attempt to reduce the boilerplate required to set
-        -- up general-purpose language servers and improve performance by
-        -- removing the need for external processes.
+            'jose-elias-alvarez/null-ls.nvim'
+        }
 
-        'jose-elias-alvarez/null-ls.nvim'
-    }
+        use {
+            -- Autocompletion
 
-    use {
-        -- Autocompletion
+            'hrsh7th/nvim-cmp',
 
-        'hrsh7th/nvim-cmp',
+            -- luasnip completion source for nvim-cmp
 
-        -- luasnip completion source for nvim-cmp
+            'saadparwaiz1/cmp_luasnip',
 
-        'saadparwaiz1/cmp_luasnip',
+            -- source for neovims builtin lsp client
 
-        -- source for neovims builtin lsp client
+            'hrsh7th/cmp-nvim-lsp',
+            'hrsh7th/cmp-buffer',
+            'hrsh7th/cmp-path',
+            'hrsh7th/cmp-cmdline',
+            'hrsh7th/cmp-nvim-lsp-document-symbol',
+            'hrsh7th/cmp-nvim-lsp-signature-help'
+        }
 
-        'hrsh7th/cmp-nvim-lsp',
-        'hrsh7th/cmp-buffer',
-        'hrsh7th/cmp-path',
-        'hrsh7th/cmp-cmdline',
-        'hrsh7th/cmp-nvim-lsp-document-symbol',
-        'hrsh7th/cmp-nvim-lsp-signature-help'
-    }
+        use {
+            -- Snippet Engine
 
+            "L3MON4D3/LuaSnip", tag = "v<CurrentMajor>.*",
 
-    use {
-        -- Snippet Engine
+            -- Snippets
 
-        "L3MON4D3/LuaSnip", tag = "v<CurrentMajor>.*",
+            'rafamadriz/friendly-snippets',
+        }
 
-        -- Snippets
+        -- devicons icon set
 
-        'rafamadriz/friendly-snippets',
-    }
+        use 'nvim-tree/nvim-web-devicons'
 
-    -- devicons icon set
-
-    use 'nvim-tree/nvim-web-devicons'
-
-    -- prittier formatter
-
-    use('MunifTanjim/prettier.nvim')
-
-
-    if packer_bootstrap then
-        require('packer').sync()
-    end
-end)
+        if packer_bootstrap then
+            require('packer').sync()
+        end
+    end)

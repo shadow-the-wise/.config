@@ -31,10 +31,10 @@ local on_attach = function(client, bufnr)
     if client.supports_method "textDocument/formatting" then
         vim.api.nvim_clear_autocmds { group = LspFormatting, buffer = bufnr }
         vim.api.nvim_create_autocmd("BufWritePre", {
+            desc = "format the textDocument on save",
             group = LspFormatting,
             buffer = bufnr,
             callback = function()
-                -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
                 vim.lsp.buf.format({ bufnr = bufnr })
                 print("formatted by " .. client.name)
             end,
@@ -120,14 +120,6 @@ require('lspconfig')["solargraph"].setup {
     },
 }
 
--- [YAML]
-
-require('lspconfig')["yamlls"].setup {
-    on_attach = on_attach,
-    flags = lsp_flags,
-    capabilities = capabilities,
-}
-
 -- [LUA]
 
 require('lspconfig')["sumneko_lua"].setup {
@@ -137,7 +129,23 @@ require('lspconfig')["sumneko_lua"].setup {
     settings = {
         Lua = {
             diagnostics = {
+                enabled = true,
                 globals = { 'vim' }
+            },
+            completion = {
+                enable = true,
+            },
+            workspace = {
+                useGitIgnore = true,
+            },
+            format = {
+                enable = true,
+            },
+            hint = {
+                enable = true,
+            },
+            hover = {
+                enable = true,
             }
         }
     }
@@ -149,10 +157,58 @@ require('lspconfig')["html"].setup {
     on_attach = on_attach,
     flags = lsp_flags,
     capabilities = capabilities,
-    filetypes = { "html", "eruby" },
+    filetypes = { "html", "eruby", "erb" },
+    settings = {
+        html = {
+            autoClosingTags = true,
+            autoCreateQuotes = true,
+            mirrorCursorOnMatchingTag = false,
+            completion = {
+                attributeDefaultValue = "doublequotes",
+            },
+            format = {
+                enable                      = true,
+                contentUnformatted          = "pre,code,textarea",
+                indentHandlebars            = false,
+                indentInnerHtml             = false,
+                maxPreserveNewLines         = 1,
+                preserveNewLines            = false,
+                templating                  = false,
+                unformatted                 = "wbr",
+                unformattedContentDelimiter = "",
+                wrapAttributes              = "auto",
+                wrapAttributesIndentSize    = 4,
+                wrapLineLength              = 120,
+            },
+            hover = {
+                documentation = true,
+                references = true,
+            },
+            validate = {
+                scripts = true,
+                styles  = true,
+            },
+            suggest = {
+                html5 = true,
+            },
+            trace = {
+                server = "off",
+            }
+        }
+    }
+}
+
+-- [YAML]
+-- TODO: formatting is not working
+
+require('lspconfig')["yamlls"].setup {
+    on_attach = on_attach,
+    flags = lsp_flags,
+    capabilities = capabilities,
 }
 
 -- [CSS]
+-- TODO: formatting is not working
 
 require('lspconfig')["cssls"].setup {
     on_attach = on_attach,
@@ -160,6 +216,7 @@ require('lspconfig')["cssls"].setup {
     capabilities = capabilities,
     filetypes = { "css", "scss", "less" },
     cmd = { "vscode-css-language-server", "--stdio" },
+    autostart = true,
     settings = {
         css = {
             validate = true
