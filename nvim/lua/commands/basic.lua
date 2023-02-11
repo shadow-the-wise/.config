@@ -14,10 +14,6 @@ vim.cmd [[colorscheme nord]]
 
 vim.cmd [[syntax enable]]
 
--- Completion color
-
-vim.cmd [[source ~/.config/nvim/colors/nvim-colors.vim]]
-
 -- [Typos]
 -- misspelling to intended wrtie file and quit
 

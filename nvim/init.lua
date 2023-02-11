@@ -55,3 +55,13 @@ if not lsp_ok then
 else
     require('lsp.init')
 end
+
+
+-- [LSP] Language server configuration.
+
+local colors_ok, colors_response = pcall(require, 'colors.init')
+if not colors_ok then
+    vim.notify(colors_response, vim.log.levels.ERROR)
+else
+    require('colors.init')
+end
