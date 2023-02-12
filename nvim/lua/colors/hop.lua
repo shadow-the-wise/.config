@@ -1,5 +1,3 @@
-vim.api.nvim_set_hl(0, 'lsp_document_highlight', { bg = "#ECEFF4" })
-
 -- [Hop]
 
 -- blue

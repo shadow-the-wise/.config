@@ -89,21 +89,20 @@ cmp.setup({
         format = function(entry, item)
             item.kind = string.format('%s', icons[item.kind])
             item.menu = ({
-                buffer = '[Buffer]',
-                luasnip = '[Snip]',
-                nvim_lsp = '[LSP]',
-                nvim_lua = '[API]',
-                path = '[Path]',
-                rg = '[RG]',
-            })[entry.source.name]
+                    buffer = '[Buffer]',
+                    luasnip = '[Snip]',
+                    nvim_lsp = '[LSP]',
+                    nvim_lua = '[API]',
+                    path = '[Path]',
+                    rg = '[RG]',
+                })[entry.source.name]
             return item
         end,
     },
-
     -- Accept currently selected item. Set `select` to `false` to only
     -- confirm explicitly selected items.
     mapping = cmp.mapping.preset.insert({
-        ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-b>'] = cmp.mapping.scroll_docs( -4),
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
         ['<ESC'] = cmp.mapping.abort(),
         ['<CR>'] = cmp.mapping.confirm({ select = true }),
@@ -113,7 +112,6 @@ cmp.setup({
                 -- You could replace the expand_or_jumpable() calls with
                 -- expand_or_locally_jumpable() -- they way you will only jump
                 -- inside the snippet region
-
             elseif luasnip.expand_or_jumpable() then
                 luasnip.expand_or_jump()
             elseif has_words_before() then
@@ -126,19 +124,18 @@ cmp.setup({
         ["<S-Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_prev_item()
-            elseif luasnip.jumpable(-1) then
-                luasnip.jump(-1)
+            elseif luasnip.jumpable( -1) then
+                luasnip.jump( -1)
             else
                 fallback()
             end
         end, { "i", "s" }),
     }),
-
     sources = cmp.config.sources({
-        { name = 'nvim_lsp', priority = 5, options = { show_autosnippets = false } },
-        { name = 'buffer', priority = 4 },
-        { name = 'luasnip', priority = 3 },
-        { name = 'path', priority = 2 },
+        { name = 'nvim_lsp',                priority = 5, options = { show_autosnippets = false } },
+        { name = 'buffer',                  priority = 4 },
+        { name = 'luasnip',                 priority = 3 },
+        { name = 'path',                    priority = 2 },
         { name = 'nvim_lsp_signature_help' },
         { name = 'nvim-lsp-document-symbol' },
         { name = 'nvim_lua' },
