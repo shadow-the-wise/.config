@@ -9,7 +9,6 @@ vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
 
 -- configure signatureHelp
 
-
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
         vim.lsp.handlers.signature_help, {
         -- Use a sharp border with `FloatBorder` highlights
