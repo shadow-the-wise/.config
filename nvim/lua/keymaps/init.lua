@@ -70,3 +70,13 @@ if not diagnostics_ok then
 else
     require('keymaps.diagnostics')
 end
+
+
+-- nvim keymaps for the yanks
+
+local yanks_ok, yanks_response = pcall(require, 'keymaps.yanks')
+if not yanks_ok then
+    vim.notify(yanks_response, vim.log.levels.ERROR)
+else
+    require('keymaps.yanks')
+end
