@@ -6,6 +6,16 @@ local telescope = require("telescope")
 
 local M = {}
 
+-- Grep Notes
+
+function M.grep_notes()
+    require("telescope.builtin").live_grep({
+        prompt_title = "Grep Notes",
+        prompt_prefix = "❯",
+        cwd = "$HOME/.notes/",
+    })
+end
+
 -- Browse Notes
 
 function M.browse_notes()
