@@ -14,7 +14,7 @@ require("mason-lspconfig").setup({
     ensure_installed = {
         "solargraph",
         "jsonls",
-        "sumneko_lua",
+        "lua_ls",
         "yamlls",
         "html",
         "cssls",
