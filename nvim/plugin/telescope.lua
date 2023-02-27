@@ -83,6 +83,7 @@ require('telescope').setup {
         },
         command_palette = {
             { "Bookmarks",
+                { "Grep Notes",      ":lua require('utils').grep_notes()" },
                 { "Browse Notes",    ":lua require('utils').browse_notes()" },
                 { "Search Notes",    ":lua require('utils').search_notes()" },
                 { "Browse Home",     ":lua require('utils').browse_home()" },
@@ -114,6 +115,7 @@ require('telescope').setup {
                 { "Marks List",               ":lua require('telescope.builtin').marks()" },
                 { "Tags - Current Directory", ":lua require('utils').search_tags()" },
                 { "Tags - Current Files",     ":lua require('telescope.builtin').tagstack()" },
+                { "Grep - Current Directory", ":lua require('telescope.builtin').live_grep()" },
             },
             { "LSP",
                 { "LSP References",       ":lua require('telescope.builtin').lsp_references()" },

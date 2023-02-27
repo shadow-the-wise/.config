@@ -13,6 +13,7 @@ function M.grep_notes()
         prompt_title = "Grep Notes",
         prompt_prefix = "❯",
         cwd = "$HOME/.notes/",
+        shorten_path = true
     })
 end
 
