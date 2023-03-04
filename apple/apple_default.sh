@@ -70,3 +70,190 @@ defaults write com.apple.screencapture location -string "${HOME}/Pictures/Screen
 # Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)
 defaults write com.apple.screencapture type -string "png"
 
+# Save default finder attributes
+defaults write com.apple.finder StandardViewSettings "{
+    ExtendedListViewSettingsV2 =     {
+        calculateAllSizes = 1;
+        columns =         (
+                        {
+                ascending = 1;
+                identifier = name;
+                visible = 1;
+                width = 664;
+            },
+                        {
+                ascending = 0;
+                identifier = ubiquity;
+                visible = 0;
+                width = 35;
+            },
+                        {
+                ascending = 0;
+                identifier = dateModified;
+                visible = 1;
+                width = 179;
+            },
+                        {
+                ascending = 0;
+                identifier = dateCreated;
+                visible = 0;
+                width = 179;
+            },
+                        {
+                ascending = 0;
+                identifier = kind;
+                visible = 1;
+                width = 115;
+            },
+                        {
+                ascending = 1;
+                identifier = label;
+                visible = 0;
+                width = 100;
+            },
+                        {
+                ascending = 1;
+                identifier = version;
+                visible = 0;
+                width = 75;
+            },
+                        {
+                ascending = 1;
+                identifier = comments;
+                visible = 0;
+                width = 300;
+            },
+                        {
+                ascending = 0;
+                identifier = dateLastOpened;
+                visible = 0;
+                width = 179;
+            },
+                        {
+                ascending = 0;
+                identifier = dateAdded;
+                visible = 1;
+                width = 179;
+            },
+                        {
+                ascending = 0;
+                identifier = shareOwner;
+                visible = 0;
+                width = 210;
+            },
+                        {
+                ascending = 0;
+                identifier = shareLastEditor;
+                visible = 0;
+                width = 210;
+            },
+                        {
+                ascending = 0;
+                identifier = invitationStatus;
+                visible = 0;
+                width = 210;
+            },
+                        {
+                ascending = 0;
+                identifier = size;
+                visible = 1;
+                width = 97;
+            },
+        );
+        iconSize = 16;
+        showIconPreview = 1;
+        sortColumn = name;
+        textSize = 12;
+        useRelativeDates = 1;
+        viewOptionsVersion = 1;
+    };
+    GalleryViewSettings =     {
+        arrangeBy = name;
+        iconSize = 48;
+        showIconPreview = 1;
+        viewOptionsVersion = 1;
+    };
+    IconViewSettings =     {
+        arrangeBy = none;
+        backgroundColorBlue = 1;
+        backgroundColorGreen = 1;
+        backgroundColorRed = 1;
+        backgroundType = 0;
+        gridOffsetX = 0;
+        gridOffsetY = 0;
+        gridSpacing = 54;
+        iconSize = 64;
+        labelOnBottom = 1;
+        showIconPreview = 1;
+        showItemInfo = 0;
+        textSize = 12;
+        viewOptionsVersion = 1;
+    };
+    ListViewSettings =     {
+        calculateAllSizes = 1;
+        columns =         {
+            comments =             {
+                ascending = 1;
+                index = 6;
+                visible = 0;
+                width = 300;
+            };
+            dateCreated =             {
+                ascending = 0;
+                index = 2;
+                visible = 0;
+                width = 179;
+            };
+            dateLastOpened =             {
+                ascending = 0;
+                index = 7;
+                visible = 0;
+                width = 179;
+            };
+            dateModified =             {
+                ascending = 0;
+                index = 1;
+                visible = 1;
+                width = 179;
+            };
+            kind =             {
+                ascending = 0;
+                index = 3;
+                visible = 1;
+                width = 115;
+            };
+            label =             {
+                ascending = 1;
+                index = 4;
+                visible = 0;
+                width = 100;
+            };
+            name =             {
+                ascending = 1;
+                index = 0;
+                visible = 1;
+                width = 664;
+            };
+            size =             {
+                ascending = 0;
+                index = 8;
+                visible = 1;
+                width = 97;
+            };
+            version =             {
+                ascending = 1;
+                index = 5;
+                visible = 0;
+                width = 75;
+            };
+        };
+        iconSize = 16;
+        showIconPreview = 1;
+        sortColumn = name;
+        textSize = 12;
+        useRelativeDates = 1;
+        viewOptionsVersion = 1;
+    };
+    SettingsType = StandardViewSettings;
+}"
+
