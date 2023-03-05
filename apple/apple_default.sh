@@ -70,6 +70,7 @@ defaults write com.apple.screencapture location -string "${HOME}/Pictures/Screen
 # Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)
 defaults write com.apple.screencapture type -string "png"
 
+# To check the settings use defaults read com.apple.finder StandardViewSettings
 # Save default finder attributes
 defaults write com.apple.finder StandardViewSettings "{
     ExtendedListViewSettingsV2 =     {
