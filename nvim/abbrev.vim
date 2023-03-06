@@ -13,6 +13,7 @@ iabbrev soem some
 iabbrev whne when
 iabbrev hahs hash
 iabbrev Hahs Hash
+iabbrev takl talk
 "-----------------------------------------------------------------------------
 " Spelling
 "-----------------------------------------------------------------------------
