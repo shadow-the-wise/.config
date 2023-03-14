@@ -192,6 +192,9 @@ alias ndup="nduplicate"
 # Alias the git command to a single letter
 alias g='git'
 
+# weeks
+alias week='date +%W'
+
 # }}}
 # resource {{{1
 
