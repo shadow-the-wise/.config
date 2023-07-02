@@ -110,6 +110,7 @@ iabbrev flourescent fluorescent
 iabbrev foriegn foreign
 iabbrev freind friend
 iabbrev fulfil fullfil
+iabbrev finishd finished
 "-----------------------------------------------------------------------------
 " G
 "-----------------------------------------------------------------------------
