@@ -11,3 +11,4 @@ customcommandshistory:
 - q
 - ""
 hidecommandlog: false
+ignorewhitespaceindiffview: false
