@@ -8,13 +8,13 @@
 --write-auto-subs
 
 # Subtitles best
---sub-format "srt/ass/best"
+#--sub-format "srt/ass/best"
 
 # best video and audio format available
 -S "ext"
 
 # write json meta data
---write-info-json
+#--write-info-json
 
 # format the title string replacing space with underscores
 --replace-in-metadata "title,uploader" "[ _]" "-"
