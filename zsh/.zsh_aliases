@@ -33,6 +33,8 @@ alias -g N="| /dev/null"
 alias -g S='| sort'
 alias -g A='| awk'
 
+alias l='clear'
+
 #  -I
 #  Request confirmation once if more than three files are being removed or if a
 #  directory is being recursively removed. This is a far less intrusive option
