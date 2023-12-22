@@ -76,6 +76,10 @@ if [[ -x $(which nvim 2> /dev/null) ]]; then
     export EDITOR="nvim"
     export USE_EDITOR=$EDITOR
     export VISUAL=$EDITOR
+else
+    export EDITOR="vim"
+    export USE_EDITOR=$EDITOR
+    export VISUAL=$EDITOR
 fi
 
 # Set less options
